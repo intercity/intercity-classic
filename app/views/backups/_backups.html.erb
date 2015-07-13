@@ -1,0 +1,19 @@
+<% if data.count == 0%>
+  <p>You dont have any apps that have backups enabled.</p>
+<% else %>
+  <% data.each do |app, backups|%>
+    <div>
+      <h2><%= app %></h2>
+      <ul>
+      <% backups.each do |backup|%>
+        <% if backup[:error].present? %>
+          <li><%= backup[:error] %></li>
+        <% else %>
+          <li><%= link_to backup[:name], backup[:url] %></li>
+        <% end %>
+      <% end %>
+      </ul>
+    </div>
+    <hr/>
+  <% end %>
+<% end %>

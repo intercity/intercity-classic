@@ -1,0 +1,11 @@
+<% active ||= "settings"%>
+<section class="header">
+  <h1><%= image_tag current_user.avatar_url(48) %> Your account</h1>
+</section>
+<section class="navigation">
+  <ul class="account-navigation">
+    <li class="tab-header-and-content">
+      <%= link_to "Settings", account_path, class: "tab-link #{"is-active" if active == "settings"}"  %>
+    </li>
+  </ul>
+</section>

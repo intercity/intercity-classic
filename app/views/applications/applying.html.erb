@@ -1,0 +1,14 @@
+<div id="applying">
+  <h1><i class="fa fa-repeat fa-spin fa-fw" /></i> Applying application on server <strong><%= current_server.name %></strong></h1>
+
+  <p>Please wait while we configure the application. This may take a few minutes if this is the first application on this server.</p>
+
+  <p>This is what's happening:</p>
+
+  <ul>
+    <li>Creating a directory structure for the application in <strong><code>/u/apps/<%= current_app.name %></code></strong></li>
+    <li>Installing Ruby <strong><%= current_app.ruby_version %></strong></li>
+    <li>Creating the database <strong><%= current_app.name %></strong></li>
+    <li>Generating a <strong><code>database.yml</code></strong> for your application</li>
+  </ul>
+</div>

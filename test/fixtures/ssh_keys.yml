@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+sshkey_one:
+  server: bootstrapped
+  name: Ssh key one
+  key: ssh-key-data
+
+sshkey_two:
+  server: bootstrapped
+  name: Second ssh key
+  key: ssh-key-data

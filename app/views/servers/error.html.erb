@@ -1,0 +1,26 @@
+<section class="servers">
+  <div class="body">
+    <div class="container">
+      <section class="center_window">
+        <header>
+          <h1>Error while installing your server</h1>
+        </header>
+      </section>
+      <section class="body">
+        <p>We where not able to install your server with the following reason:<br/>
+        <section id="flash_messages">
+          <div class="alert error">
+            <%= @server.last_error %>
+          </div>
+        </section>
+        <p>We tried to recover from this error, but we where not able to do so.
+          If you keep running into this problem, please let us know!</p>
+          <p>You can remove this server from your account, and try adding it again.</p>
+  <%= link_to server_path(@server), method: :delete, class: 'button problem', data: {confirm: "This will remove the server from your account, are you sure?"} do %>
+          <i class="fa fa-trash-o"></i> Remove this server
+        <% end %>
+          Or <%= link_to "Go back to your server list", root_path %>
+      </section>
+    </div>
+  </div>
+</section>

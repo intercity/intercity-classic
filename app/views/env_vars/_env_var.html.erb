@@ -1,0 +1,13 @@
+<% if env_var.persisted? %>
+  <%= content_tag_for(:tr, env_var) do %>
+    <td>
+      <%= env_var.key %>
+    </td>
+    <td class="env-var-value var-toggler" data-action="toggle-var-visibility" data-env-var-id="<%= env_var.id %>">
+      <span class="js-hidden-var" style="display: none;" title="<%= env_var.value %>"><%= truncate(env_var.value) %></span>
+      <span class="js-starred-var">✱ ✱ ✱ ✱ ✱</span>
+    </td>
+    <td class="action"><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, env_var_path(current_app.server, current_app, env_var),
+      data: {confirm: 'Are you sure?'}, method: :delete %></td>
+  <% end%>
+<% end %>

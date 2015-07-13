@@ -1,0 +1,7 @@
+scss:
+  config_file: .scss-style.yml
+ruby:
+  config_file: .rubocop.yml
+  Style/AlignHash:
+    Enabled: false
+

@@ -1,0 +1,73 @@
+<% title('Apps overview') %>
+
+    <%= render partial: 'application/flash_messages' %>
+
+    <header class="header-for-item-overview header-with-actions">
+      <div class="container">
+        <h1>All apps</h1>
+        <div class="actions">
+          <%= link_to setup_path, class: 'button', id: 'install_server_button' do %>
+            <i class="fa fa-plus"></i> New app
+          <% end %>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+
+    <div class="notification notification-success">
+      <span class="notification-icon">
+        <%= fa_icon "check fw" %>
+      </span>
+      <p class="notification-message">
+        Server <b>Intercity</b> has finished installing.
+        <%= link_to "#" do %>
+          Continue with deploying APPNAME <%= fa_icon "angle-right" %>
+        <% end %>
+      </p>
+    </div>
+
+    <div class="body">
+
+        <section class="servers">
+
+          <table class="servers">
+            <thead>
+              <tr>
+                <th class="name">App</th>
+                <th class="server">Server</th>
+                <th class="action" style="width: 180px;"></th>
+              </tr>
+            </thead>
+            <% @applications.each do |app| %>
+            <tr>
+              <td class="name">
+                <%= fa_icon "cube fw" %>
+                <%= link_to app.name, application_path(app.server, app) %></td>
+              <td class="server">
+                <%= fa_icon "server fw" %>
+                <%= link_to server_path(app.server) do %>
+                   <%= app.server.name %>
+                <% end %>
+              </td>
+              <td class="action">
+                <% # TODO: Only show %>
+                <%= link_to "#" do %>
+                  Continue setup
+                  <%= fa_icon "angle-right fw" %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+            <% if @applications.blank? %>
+              <tr><td colspan="2" class="blank_slate">No servers with applications added yet. Get started by clicking on the <strong>Add app</strong> button.</td></tr>
+            <% end %>
+          </table>
+
+      </section>
+
+    </div>
+
+  </div>
+
+</section>

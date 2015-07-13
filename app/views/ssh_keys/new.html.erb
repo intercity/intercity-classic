@@ -1,0 +1,32 @@
+<% title("Add a SSH key") %>
+
+<h1>New SSH key</h1>
+
+<%= form_for @ssh_key, url: ssh_keys_path(current_server) do |f| %>
+
+  <% if @ssh_key.errors.any? %>
+    <section class="form_errors">
+      <ul>
+        <% @ssh_key.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Michiel's Macbook Air" %>
+  </p>
+
+  <p>
+    <%= f.label :key, "SSH Public Key" %>
+    <%= f.text_area :key, placeholder: "Copy and paste the contents of your ~/.ssh/id_rsa.pub here." %>
+  </p>
+
+  <p class="submit">
+    <%= button_tag "Save key to server", disabled: current_server.working? %>
+    or
+    <%= link_to "Cancel", ssh_keys_path(current_server) %>
+  </p>
+<% end %>

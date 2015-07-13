@@ -1,0 +1,51 @@
+<% title('Servers list') %>
+
+<section class="dashboard">
+
+  <div class="container page">
+    <%= render "flash_messages" %>
+    <header>
+        <h1>Servers</h1>
+        <div class="actions">
+          <%= link_to new_server_path, class: 'button', id: 'install_server_button' do %>
+            <i class="fa fa-plus"></i> New Server
+          <% end %>
+        </div>
+    </header>
+    <div class="body">
+      <section class="servers">
+        <table class="servers">
+          <thead>
+            <tr>
+              <th class="status"></th>
+              <th class="name">Server</th>
+              <th class="action"></th>
+            </tr>
+          </thead>
+          <% @servers.each do |server| %>
+          <tr>
+            <td class="status">
+              <% if server.working? %>
+                <i class="fa fa-spinner fa-spin fa-fw"></i>
+              <% elsif !server.bootstrapped? || server.pending_changes? %>
+                <i class="fa fa-exclamation-circle fa-fw"></i>
+              <% else %>
+                <i class="fa fa-check fa-fw"></i>
+              <% end %>
+            </td>
+            <td class="name"><%= link_to server.name, server_path(server) %> <span class="server_address"><%= server.address %></span></td>
+            <td class="action" style="text-align: center;">
+              <%= link_to server_path(server) do %>
+                <i class="fa fa-cogs"></i> Apps & settings
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+          <% if @servers.blank? %>
+            <tr><td colspan="3" class="blank_slate">No servers added yet. Get started by clicking on the <strong>Install a new server</strong> button.</td></tr>
+          <% end %>
+        </table>
+      </section>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+section.dashboard {
+  header {
+    h1 {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+
+  table.servers {
+    th.status {
+      width: 50px;
+    }
+    th.action {
+      width: 180px;
+    }
+    td.configure_server {
+      a {
+        text-decoration: underline;
+      }
+    }
+    td.action {
+      width: 180px;
+      font-size: 16px;
+    }
+    td.name {
+      span.server_address {
+        color: #aaa;
+        font-size: 14px;
+      }
+    }
+  }
+}

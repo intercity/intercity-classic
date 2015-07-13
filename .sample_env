@@ -1,0 +1,9 @@
+ENCRYPTION_KEY=12345678901234567890123456789012 # Key needs to be exactly 32 chars (= bytes)
+ROLLBAR_ACCESS_TOKEN=your_rollbar_access_token
+QUIET_ASSETS=0
+GEOIP_PATH=/usr/share/GeoIP/GeoIP.dat
+# On Mac after "brew install geoip"
+# GEOIP_PATH=/usr/local/var/GeoIP/GeoIP.dat
+STRIPE_SECRET_KEY=sk_test_Rs3xGCqdVWn5AwUswOcVPcXX
+STRIPE_PUBLISHABLE_KEY=pk_test_7Tr2iCB9L2yvP4nBXSCL6vXX
+DO_TOKEN=

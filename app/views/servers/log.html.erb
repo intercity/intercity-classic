@@ -1,0 +1,12 @@
+<% if @server.bootstrapped? %>
+<h1>Latest server log</h1>
+<div style="width: 100%; overflow: auto; font-size: 12px;">
+<pre><%= @log %></pre>
+</div>
+<% else %>
+<html>
+  <body>
+    <pre><%= @log %></pre>
+  </body>
+</html>
+<% end %>

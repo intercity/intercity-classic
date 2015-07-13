@@ -1,0 +1,44 @@
+<% title("Server: #{current_app.server.name}: Edit application") %>
+
+<%= render "app_navigation" %>
+
+<section class="settings-section">
+  <h2>Settings</h2>
+
+  <div class="settings-content">
+    <%= form_for current_app, url: application_path(current_app.server, current_app), method: :patch do |f| %>
+      <%= render "application_fields", f: f %>
+      <%= f.submit "Apply changes", class: "button", disabled: current_app.server.working? %>
+    <% end %>
+  </div>
+
+</section>
+
+<section class="remove-application">
+  <h2>Remove this application</h2>
+  <p><strong>WARNING:</strong> There is no going back! We will literally obliterate this app from your server. That includes deployed source code, the database and any other files that are created by the application.</p>
+
+  <p class="submit js-applying <%= "hidden" unless current_app.server.working? %>" data-server-state="working">
+    <i class="fa fa-spin fa-repeat fa-fw"></i> Applying changes...
+  </p>
+  <p class="submit js-apply <%= "hidden" if current_app.server.working? %>" data-server-state="idle">
+    <%= link_to "Remove #{current_app.name}", "#confirm-delete", class: "button danger", data: { behavior: "show-modal" } %>
+  </p>
+</section>
+
+<section id="confirm-delete" class="mfp-hide remove-application modal-dialog">
+  <h2>Are you absolutely sure?</h2>
+  <div class="modal-content">
+  <p><b>This action cannot be undone!</b></p>
+  <p>This will permanently:</p>
+  <ul>
+    <li>Remove all application files</li>
+    <li>Disable the application in the web server</li>
+    <% if current_app.backup.enabled? %>
+      <li>Disable all backups</li>
+    <% end %>
+  </ul>
+  <p><%= link_to "I understand, remove #{current_app.name}",
+    application_path(current_server, current_app), method: :delete, class: "button danger" %></p>
+  </div>
+</section>

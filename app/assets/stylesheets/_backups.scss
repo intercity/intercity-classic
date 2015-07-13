@@ -1,0 +1,11 @@
+section.backups {
+  @extend .container;
+  .header {
+    @extend .center_window;
+    margin-bottom: 0px !important;
+  }
+  section.body {
+    @extend .center_window;
+    margin-top: 0px !important;
+  }
+}

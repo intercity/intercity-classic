@@ -1,0 +1,29 @@
+<div class="container page">
+  <%= render "onboarding/progress", active: "server_setup" %>
+  <div class="onboarding-page">
+    <h1 class="onboarding-heading">Confirm Droplet Creation</h1>
+    <%= form_for @onboarding, url: setup_finalize_path, method: :post do |f|  %>
+    <div class="onboarding-page-content">
+      <div class="server-option without-borders">
+        <div class="option-image align-top">
+          <img src="http://c93fea60bb98e121740fc38ff31162a8.s3.amazonaws.com/wp-content/uploads/2014/12/digital-ocean.png">
+        </div>
+        <div class="option-description">
+          <p>We are going to launch a Droplet in your DigitalOcean account so you can host <b><%= @onboarding.name %></b>.</p>
+          <p>The Droplet is going to be launched in the <b>
+            <nobr><%= I18n.t "server.digitalocean_region.#{@onboarding.digitalocean_region}" %></nobr></b> region.</p>
+        </div>
+      </div>
+    </div>
+    <div class="onboarding-buttons">
+      <div class="button-options">
+        <%= link_to setup_droplet_path, class: "cancel-link" do %>
+          <%= fa_icon "angle-left fw" %> Cancel
+        <% end %>
+        <span class="or">or</span>
+        <%= f.button "Launch Droplet", class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

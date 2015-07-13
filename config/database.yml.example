@@ -1,0 +1,5 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: intercity_production
+  pool: 10

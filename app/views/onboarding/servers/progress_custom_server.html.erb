@@ -1,0 +1,30 @@
+<div class="container page">
+  <%= render "onboarding/progress", active: "server_setup" %>
+  <div class="onboarding-page">
+    <h1 class="onboarding-heading">Server Installation Progress</h1>
+    <div class="onboarding-page-content">
+      <div class="server-option without-borders">
+        <div class="option-description">
+          <p>We are now installing your server with the required
+          software and configuration files to host <b><%= @onboarding.name %></b>.</p>
+          <p>This may take a few minutes. We'll send you an email when this is finished.
+          So don't feel required to keep staring at this screen ;-).</p>
+          <p>When this is finished, the next steps will guide you through adding an SSH key and deploying your app.</p>
+        </div>
+      </div>
+    </div>
+    <div class="onboarding-buttons" data-server-state="working">
+      <%= fa_icon "spinner pulse fw lg" %> Setting up your server...
+    </div>
+    <div class="onboarding-buttons hidden" data-server-state="idle">
+      <p><%= fa_icon "check lg fw" %><b>Done</b></p><p>We've finished setting up your Server.<br>Now let's deploy your app!</p>
+      <p><%= link_to "Continue", setup_deploy_key_path, class: "btn btn-continue" %>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    clearTimeout(window.onboarding_poller);
+    window.onboarding_poller = setTimeout(function() { $.get("<%= setup_poll_path(@onboarding) %>")}, 3000);
+  });
+</script>

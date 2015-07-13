@@ -1,0 +1,24 @@
+a#Intercom {
+  position: fixed;
+  bottom: -5px;
+  right: 40px;
+  background-color: #334248;
+  padding: 10px 10px 15px 10px;
+  border-radius: 4px 4px 0 0;
+  border: 1px 1px 0px 1px solid #000;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 1px 1px #000;
+  i {
+    margin-right: 10px;
+  }
+  &:hover {
+    bottom: 0px;
+    background-color: tint(#334248, 20%);
+  }
+  &:active {
+    background-color: tint(#334248, 40%);
+  }
+  @include transition(all 0.1s);
+}

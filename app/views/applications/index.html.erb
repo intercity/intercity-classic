@@ -1,0 +1,18 @@
+<% title("Server: #{current_server.name}") %>
+
+<section class="applications">
+  <table class="applications">
+    <thead>
+      <tr>
+        <th class="name">Applications
+          <%= link_to new_application_path(current_server), class: 'table-action button' do
+            %><i class="fa fa-plus"></i> Add application<% end %>
+        </th>
+      </tr>
+    </thead>
+    <%= render current_server.applications %>
+      <tr class="blank_slate <%= "hidden" unless current_server.applications.blank? %>">
+        <td class="blank_slate" colspan="4">This is where the application deployments on this server will be listed. Add an application by clicking the <strong>Add application</strong> button above.</td>
+      </tr>
+  </table>
+</section>

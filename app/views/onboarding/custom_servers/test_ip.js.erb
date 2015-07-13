@@ -1,0 +1,33 @@
+$('span#ssh-port-no').text("<%= @port %>");
+<% if @connected %>
+  parent = $("[data-role~=form-step-ip]");
+    setTimeout(function() {
+      var ssh_key_fields;
+      parent.find("[data-form-area=initial]").hide();
+      parent.find("[data-form-area=working]").hide();
+      parent.find(".option-description").slideUp(function() {
+        ssh_key_fields.find("#ssh-username-field").focus();
+        return $('body').animate({
+          scrollTop: ssh_key_fields.offset().top - 100
+        });
+      });
+      ssh_key_fields = $("#install-ssh-key-fields");
+      ssh_key_fields.animate({
+        opacity: 1
+      });
+
+      parent.removeClass("error");
+      parent.addClass("success");
+      parent.find("[data-form-area=finished]").removeClass("hidden");
+      parent.find("[data-form-area=error]").addClass("hidden");
+      $("[data-role~=form-step-ssh] :input").prop("disabled", false)
+      return parent.addClass("finished");
+    }, 1000);
+<% else %>
+  container = $("[data-role~=form-step-ip]");
+  container.find("[data-form-area=initial]").removeClass("hidden");
+  container.find("[data-form-area=working]").addClass("hidden");
+  container.find("[data-form-area=error]").removeClass("hidden");
+  container.find("button").removeClass("hidden");
+  container.addClass("error");
+<% end %>

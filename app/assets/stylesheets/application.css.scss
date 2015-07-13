@@ -1,0 +1,45 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require font-awesome
+ *= require magnific-popup
+ *= require normalize-rails
+ *= require highlight/gray
+ *= require nprogress
+ *= require nprogress-bootstrap
+ */
+@import "bourbon";
+@import "base/base";
+@import "neat";
+
+@import "partials/buttons";
+@import "partials/components";
+
+@import "common";
+@import "account";
+@import "applications";
+@import "backups";
+@import "center_window";
+@import "dashboard";
+@import "env_vars";
+@import "forms";
+@import "guides";
+@import "intercom";
+@import "layouts";
+@import "login";
+@import "navigation";
+@import "servers";
+@import "ssh_keys";
+@import "subscriptions";
+@import "welcome";
+@import "ssl_certificates";
+@import "styleguide";
+@import "environment-banner";

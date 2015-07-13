@@ -1,0 +1,21 @@
+<section class="login ">
+
+  <h1>Resend confirmation instructions</h1>
+  <p>Already have an account? <%= link_to "Sign in", new_user_session_path %></p>
+  <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+    <% unless resource.errors.empty? %>
+      <section id="flash_messages">
+        <div class="alert error">
+          <% resource.errors.full_messages.each do |m| %>
+            <%= m %><br/>
+        <% end %>
+        </div>
+      </section>
+    <% end %>
+
+    <div><%= f.label :email %><br />
+    <%= f.email_field :email, :autofocus => true %></div>
+
+    <button>Resend confirmation instructions</button>
+  <% end %>
+</section>

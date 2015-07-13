@@ -1,0 +1,37 @@
+section.env_vars {
+  form.new_env_var {
+    div.flashes {
+      &.error {
+        color: #c00;
+      }
+    }
+    .input-group {
+      input#env_var_key, input#env_var_value {
+        width: 100%;
+      }
+      &.submit {
+        button {
+          margin-top: 20px;
+        }
+      }
+    }
+    .hidden {
+      display: none;
+    }
+  }
+
+  div.submit {
+    margin: 20px 0;
+  }
+  th.key_column {
+    width: 40%;
+  }
+  td.var-toggler {
+    cursor: pointer;
+    &:hover {
+      .js-starred-var {
+        color: #555;
+      }
+    }
+  }
+}

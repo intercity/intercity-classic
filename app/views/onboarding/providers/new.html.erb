@@ -1,0 +1,47 @@
+<div class="container page">
+
+  <%= render "onboarding/progress", active: "server_setup" %>
+  <div class="onboarding-page">
+    <h1 class="onboarding-heading">Choose a hosting option</h1>
+    <div class="onboarding-page-content">
+      <%= form_for @onboarding, url: setup_provider_path, html: { class: "digitalocean" }, method: :post do |f| %>
+        <table class="server-option">
+          <tr>
+            <td class="option-image">
+              <%= image_tag "digital-ocean.png" %>
+            </td>
+            <td class="option-description">
+              <p><b>Launch a Droplet</b></p>
+              <p class="option-explanation">On the next step you can choose a Region and confirm launching it.</p>
+            </td>
+            <td class="choose-option">
+              <%= f.hidden_field :provider, value: "digitalocean" %>
+              <%= f.button "Choose", class: "btn btn-continue" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+      <%= form_for @onboarding, url: setup_provider_path, html: { class: "custom_server" }, method: :post do |f| %>
+        <table class="server-option">
+          <tr>
+            <td class="option-image option-image-icon"><%= fa_icon "server lg" %></td>
+            <td class="option-description">
+              <p><b>Your own VPS</b></p>
+              <p class="option-explanation">Get a Ubuntu 14.04 LTS VPS from any vendor and host your apps on it.</p>
+            </td>
+            <td class="choose-option">
+              <%= f.hidden_field :provider, value: "custom_server" %>
+              <%= f.button "Choose", class: "btn btn-continue" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+    <div class="onboarding-buttons">
+      <%= link_to setup_app_path do %>
+        <%= fa_icon "angle-left fw" %> Back to app setup
+      <% end %>
+    </div>
+  </div>
+
+</div>

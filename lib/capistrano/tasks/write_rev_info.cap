@@ -1,0 +1,12 @@
+namespace :deploy do
+  task :set_rev_info do
+    sha = `git rev-parse --short HEAD`.chomp
+    branch = fetch(:branch)
+    user = `whoami`.chomp
+    on roles(:app) do
+      within release_path do
+        execute :echo, "#{branch}@#{sha} by #{user} > public/version"
+      end
+    end
+  end
+end

@@ -1,0 +1,56 @@
+section.account {
+  .header {
+    @extend .center_window;
+    margin-bottom: 0px !important;
+    h1 {
+      line-height: 48px;
+      img {
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+    }
+  }
+  .navigation {
+    @extend .center_window;
+    clear: both;
+    margin-bottom: 0px !important;
+    ul {
+      @include clearfix;
+      margin-bottom: $base-spacing;
+      border-bottom: 1px solid $base-border-color;
+      li.tab-header-and-content {
+        display: inline;
+      }
+      li.tab-text-content {
+        display: inline;
+        float: right;
+        @include inline-block;
+        padding: $base-spacing/2 $gutter;
+      }
+      a.tab-link {
+        background-color: $base-background-color;
+        color: $dark-gray;
+        display: block;
+        font-weight: 400;
+        padding: $base-spacing/2 $gutter;
+        @include inline-block;
+        &:hover {
+          color: $base-link-color;
+        }
+        &:focus {
+          outline: none;
+        }
+        &.is-active {
+          border-bottom: 0;
+          border: 1px solid $base-border-color;
+          border-bottom-color: $base-background-color;
+          margin-bottom: -1px;
+        }
+      }
+    }
+  }
+  section.body {
+    @extend .center_window;
+    margin-top: 0px !important;
+  }
+}

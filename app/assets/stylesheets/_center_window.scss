@@ -1,0 +1,82 @@
+section.center_window, article.center_window {
+  @include shift(2);
+  @include span-columns(8);
+  margin-top: 40px;
+}
+
+section.wide_window {
+  @include span-columns(9 of 9);
+}
+
+section.center_window, section.wide_window, article.center_window {
+  position: relative;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-bottom: 20px;
+
+  form span.error input {
+    border-color: #c00;
+    box-shadow-color: #c00;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  h1 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+  header {
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+  }
+  header h1 {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+  }
+  header p {
+    margin-bottom: 0;
+    line-height: 1.5;
+    margin: 16px 20px;
+  }
+  ul.fa-ul {
+    margin: 20px;
+    margin-left: 40px;
+  }
+  p {
+    line-height: 1.3;
+  }
+  input#server_name {
+    width: 100%;
+    font-size: 20px;
+  }
+  input#server_ssh_port {
+    width: 80px;
+  }
+  p.server_address, p.server_username {
+    @include span-columns(3 of 8);
+  }
+  p.server_ssh_port, p.server_password {
+    @include span-columns(3 of 8);
+    @include omega();
+  }
+  p.continue {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  section.bootstrapping_done header i {
+    color: green;
+  }
+
+  section.bootstrapping_error header i {
+    color: red;
+  }
+}

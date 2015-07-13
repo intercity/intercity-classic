@@ -1,0 +1,5 @@
+<% if ENV['SHOW_ENVIRONMENT_BANNER'] %>
+  <div class="environment-banner <%= Rails.env %>">
+    <%= Rails.env %> | <%= "#{current_rev_info}" %>
+  </div>
+<% end %>

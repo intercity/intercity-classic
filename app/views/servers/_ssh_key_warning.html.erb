@@ -1,0 +1,8 @@
+<% if current_server.ssh_keys.empty? %>
+  <section id="flash_messages">
+    <div class="alert warning">
+      Before you can deploy, you'll need to add your SSH key
+      <%= link_to "+ Add your ssh key", new_ssh_key_path(current_server), class: "btn btn-table-action pull-right" %>
+    </div>
+  </section>
+<% end %>

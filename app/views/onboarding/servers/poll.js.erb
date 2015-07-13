@@ -1,0 +1,8 @@
+<% if @onboarding.server.working? %>
+  $('[data-server-state~=working]').removeClass('hidden');
+  clearTimeout(window.onboarding_poller);
+  window.onboarding_poller = setTimeout(function() { $.get("<%= setup_poll_path(@onboarding) %>")}, 3000);
+<% else %>
+  $('[data-server-state~=working]').addClass('hidden');
+  $('[data-server-state~=idle]').removeClass('hidden');
+<% end %>

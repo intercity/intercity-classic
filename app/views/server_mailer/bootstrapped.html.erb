@@ -1,0 +1,17 @@
+<% content_for :title, "Server installation finished" %>
+<p>Hello <%= @user.full_name %>!</p>
+
+<p>We just wanted to let you know that the server <b><%= @server.name %></b> is installed.</p>
+<table style="background: #f7f7f7; width: 100%; padding: 10px;">
+  <tr>
+    <td><b>Server:</b></td>
+    <td><%= @server.name %></td>
+  </tr>
+  <tr>
+    <td><b>IP address:</b></td>
+    <td><%= @server.address %></td>
+  </tr>
+</table>
+
+<p style="text-align: center;"><%= link_to "Add your first app now", server_url(@server),
+  style: "display: inline-block; padding: 12px; margin: 12px; text-decoration: none; border-radius: 4px; background-color: #4294F0; color: #fff" %></p>

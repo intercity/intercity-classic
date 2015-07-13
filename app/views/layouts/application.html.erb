@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title).present? ? yield(:title) : "Intercity" %></title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body data-poll-server-url="<%= poll_server_url %>">
+<%= render "shared/environment_banner" %>
+<% if user_signed_in? %>
+
+  <section class="nav_wrapper">
+
+    <nav>
+
+      <div class="main">
+        <h1><%= link_to "Intercity", dashboard_path %></h1>
+
+        <% if feature_flipper[:app_overview].enabled? current_user %>
+          <%= link_to app_overview_path, class: "section #{on_applications}" do %>
+            <%= fa_icon 'cubes', text: 'Apps' %>
+          <% end %>
+        <% end %>
+
+        <div class="inactive" style="opacity: 0.5">
+
+          <%= link_to servers_path, class: "section #{on_servers}" do %>
+            <%= fa_icon 'server', text: 'Servers' %>
+          <% end %>
+
+          <%= link_to backups_path, class: "section #{on_backups}" do %>
+            <%= fa_icon "history", text: "Backups" %>
+          <% end %>
+
+        </div>
+      </div>
+
+      <div class="account-menu">
+        <%= link_to account_path, class: "#{on_account}" do %>
+          <%= image_tag current_user.avatar_url(96) %> Your account
+        <% end %>
+        <%= link_to destroy_user_session_path, class: 'logout' do %>
+          <%= fa_icon 'sign-out large fw' %>
+        <% end %>
+      </div>
+    </nav>
+
+  </section>
+
+<% end %>
+
+<%= content_for?(:content) ? yield(:content) : yield %>
+</body>
+</html>

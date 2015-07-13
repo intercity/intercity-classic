@@ -1,0 +1,11 @@
+<section class="center_window">
+  <header>
+    <h1><i class="fa fa-warning fa-fw"></i> Error while applying <strong><%= current_app.name %></strong></h1>
+  </header>
+
+  <p>The changes to the application could not be applied on the server.</p>
+
+  <p><%= link_to "View log", log_server_path(current_server), target: '_blank' %></p>
+
+  <p><%= link_to "Report this...", "#", id: "IntercomReportProblem", class: "problem button", data: { url: application_url(current_server, current_app) } %> or <%= link_to "Back", edit_application_path(current_server, current_app) %> </p>
+</section>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+enabled:
+  enabled: true
+  application: chef_builder_app1
+  storage_type: 0
+  dropbox_api_key: api_key
+  dropbox_api_secret: api_secret
+  s3_access_key: "abc123"
+  s3_secret_access_key: "321cba"
+  s3_bucket: "testing-bucket"
+  s3_region: "eu-west-1"
+
+disabled:
+  enabled: false
+  application: intercity_beta
+  storage_type: 0
+  dropbox_api_key:
+  dropbox_api_secret:

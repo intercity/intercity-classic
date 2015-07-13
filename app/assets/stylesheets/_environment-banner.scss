@@ -1,0 +1,17 @@
+.environment-banner {
+  font-size: 0.8em;
+  text-align: center;
+
+  $dev-green: #008000;
+  $staging-red: #ff4856;
+
+  &.development {
+    background: lighten($dev-green, 10%);
+    color: lighten($dev-green, 70%);
+  }
+
+  &.beta {
+    background: lighten($staging-red, 10%);
+    color: lighten($staging-red, 70%);
+  }
+}

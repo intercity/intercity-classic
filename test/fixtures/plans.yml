@@ -1,0 +1,5 @@
+basic:
+  stripe_id: 'basic'
+  stripe_name: 'Basic Server Plan'
+  stripe_amount: 5000
+  active: true

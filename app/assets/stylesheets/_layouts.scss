@@ -1,0 +1,48 @@
+.back-to-overview-nav {
+  background: #e6edf1;
+
+  .back-link {
+    display: block;
+    font-size: 0.9em;
+    padding: 1em 0;
+  }
+}
+
+.header-for-item-overview {
+  background: #e6edf1;
+  margin-bottom: $base-spacing;
+  padding-top: 1.2em;
+
+  h1 {
+    font-weight: normal;
+    margin-left: 6px;
+    margin-right: 20px;
+    margin-top: 0;
+  }
+}
+
+.header-with-actions {
+  h1,
+  .action {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .action {
+    color: #333;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+
+  .actions {
+    float: right;
+  }
+}
+
+.container {
+  @include outer-container;
+  &.page {
+    margin-top: 20px;
+    overflow: hidden;
+  }
+}

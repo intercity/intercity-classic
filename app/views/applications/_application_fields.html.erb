@@ -1,0 +1,50 @@
+<% unless current_app && current_app.persisted?%>
+  <p>
+    <%= f.label :name, "Application name" %>
+    <%= f.text_field :name, placeholder: "myapp_production" %>
+  </p>
+<% end %>
+
+<p>
+  <%= f.label :domain_names %>
+  <%= f.text_field :domain_names, placeholder: 'myapp.com www.myapp.com *.myapp.com' %>
+  <span class="hint">
+    Seperate multiple domain names with spaces.
+  </span>
+</p>
+
+<p>
+  <%= f.label :redirect_domain_names %>
+  <%= f.text_field :redirect_domain_names, placeholder: 'myapp.com www.myapp.com *.myapp.com' %>
+  <span class="hint">
+    These domain names will redirect to the first domain name provided in the "Domain Names" field.<br/>Seperate multiple domain names with spaces.
+  </span>
+</p>
+
+<p>
+  <%= f.label :rails_environment %>
+  <%= f.text_field :rails_environment %>
+</p>
+
+<p>
+  <%= f.label :ruby_version %>
+  <%= f.select :ruby_version, Application::RUBY_VERSIONS %>
+</p>
+
+
+<div class="advanced-settings">
+  <div class="toggle-inputs"><%= fa_icon "chevron-right", text: "Advanced settings:" %></div>
+  <table>
+    <tbody>
+      <tr>
+        <td class="input-group">
+          <%= f.label :client_max_body_size, "nginx: client_max_body_size" %>
+          <span class='hint'>Sets maximum file size that nginx will accept.</span>
+        </td>
+        <td class="input-group max-body-size">
+          <%= f.number_field :client_max_body_size, placeholder: "500" %><span>MB</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,22 @@
+<div class="application_navigation">
+  <%= link_to "Settings", edit_application_path(current_server, current_app),
+    class: active_on(edit_application_path(current_server, current_app)) %>
+
+  <%= link_to "Environment Variables", env_vars_path(current_server, current_app),
+    class: active_on(env_vars_path(current_server, current_app), exact_match: false) %>
+
+  <% if feature_flipper[:application_database].enabled? current_user %>
+    <%= link_to "Database", database_path(current_server, current_app),
+      class: active_on(database_path(current_server, current_app)) %>
+  <% end %>
+
+  <%= link_to "Backups", app_backups_path(current_server, current_app),
+    class: active_on(app_backups_path(current_server, current_app), exact_match: false) %>
+
+  <%= link_to "SSL Certificate", new_ssl_certificates_path(current_server, current_app),
+    class: active_on(ssl_certificates_path(current_server, current_app), exact_match: false) %>
+
+  <%= link_to "How to deploy", deploy_application_path(current_server, current_app),
+    class: active_on(deploy_application_path(current_server, current_app), exact_match: false) %>
+</div>
+<%= render "flash_messages" %>

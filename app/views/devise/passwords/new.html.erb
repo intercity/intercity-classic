@@ -1,0 +1,17 @@
+<% title "Forgot your password?" %>
+
+<section class="login forgot-password">
+  <h1>Forgot your password?</h1>
+  <p>Already have an account? <%= link_to "Sign in", new_user_session_path %></p>
+
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div><%= f.label :email %><br />
+    <%= f.email_field :email, :autofocus => true %></div>
+
+    <p><button>Send me reset password instructions</button></p>
+  <% end %>
+
+  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+</section>

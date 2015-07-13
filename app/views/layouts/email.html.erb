@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: helvetica,sans-serif, arial; background: #f0f0f0; color: #444; }
+    a { color: #1f2d3b;}
+  </style>
+</head>
+<body>
+  <table style="align: center; width: 610px; background: #fff; border: 1px solid #d7d7d7;" align="center">
+    <tr style="background: #1f2d3b; color: #fff;">
+      <td style="padding: 10px 20px; font-size: 24px;">
+        <table width="100%">
+          <tr style="color: #fff;">
+            <td style="font-size: 24px; color: #fff;"><%= content_for?(:title) ? yield(:title) : "Intercity" %></td>
+            <td align="right">
+              <%= image_tag(attachments["logo.png"].url, style: "padding-right: 10px; height: 38px;") %>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 20px;"><%= yield %></td>
+    </tr>
+    <tr>
+      <td style="padding: 20px; font-size: 12px; color: #aaa;">This email was sent automatically, but the reply is monitored by real humans! If you have a question, just reply to this email and we'll get back to you as soon as possible!</td>
+    </tr>
+  </table>
+</body>
+</html>

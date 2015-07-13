@@ -1,0 +1,24 @@
+production: &base
+  intercity: &intercity
+    # You can generate an encryption key by running:
+    # $ bin/generate_encryption_key
+    encryption_key: your_encryption_key
+
+    # Email address used in the "From" fields in mails sent by Intercity
+    from_email: example@example.com
+
+    ## Allow users to create an account
+    signup_enabled: true
+    signup_url: "/users/sign_up"
+  chef_repo:
+    path: "/path/to/chef_repo"
+development:
+  <<: *base
+  intercity:
+    <<: *intercity
+    encryption_key: befc4e5888cd5d15bbe7da0add334b5e
+test:
+  <<: *base
+  intercity:
+    <<: *intercity
+    encryption_key: befc4e5888cd5d15bbe7da0add334b5e

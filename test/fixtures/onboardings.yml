@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+full:
+  name: full_app
+  ruby_version: "2.1.2"
+  db_type: 0
+  provider: 1
+  digitalocean_region: 0
+  user: michiel

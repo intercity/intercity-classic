@@ -1,0 +1,40 @@
+<% title('Servers list') %>
+<header class="header-for-item-overview header-with-actions">
+  <div class="container">
+    <h1>All servers</h1>
+    <div class="actions">
+      <%= link_to new_server_path, class: 'button', id: 'install_server_button' do %>
+        <i class="fa fa-plus"></i> Add server
+      <% end %>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="body">
+    <%= render "flash_messages" %>
+    <section class="servers">
+      <table class="servers">
+        <thead>
+          <tr>
+            <th class="name">Server</th>
+          </tr>
+        </thead>
+        <% @servers.each do |server| %>
+        <tr>
+          <td class="name">
+            <%= fa_icon "server fw" %>
+            <% if server.onboarding.blank? || server.wizard_finished? %>
+              <%= link_to server.name, server_path(server) %>
+            <% else %>
+              <%= link_to server.name, setup_install_server_path(server.onboarding) %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+        <% if @servers.blank? %>
+          <tr><td class="blank_slate">No servers added yet. Get started by clicking on the <strong>Install a new server</strong> button.</td></tr>
+        <% end %>
+      </table>
+    </section>
+  </div>
+</div>

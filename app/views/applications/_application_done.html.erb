@@ -1,0 +1,7 @@
+<div id="applying">
+  <h1><i class="fa fa-check fa-fw"></i> Finished applying <strong><%= current_app.name %></strong></h1>
+
+  <p>The application is configured on your server and is ready for deployment using Capistrano. Read on to deploy your application:</p>
+
+  <p style="text-align: center"><%= link_to "Deploying #{current_app.name}",deploy_application_path(current_server, current_app), class: 'button' %></p>
+</div>

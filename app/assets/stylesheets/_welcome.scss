@@ -1,0 +1,174 @@
+.onboarding-page {
+  @include span-columns(6 of 12);
+  @include shift(3);
+
+  border: 1px solid $base-border-color;
+  border-radius: $base-border-radius;
+
+  .primary-action {
+    margin-top: 2em;
+  }
+
+  .onboarding-page-content {
+    padding: $base-spacing;
+  }
+
+  .onboarding-heading {
+    background-color: #eeeeee;
+    font-size: 14px;
+    margin: 0;
+    padding: $base-spacing;
+  }
+
+  .onboarding-buttons {
+    border-top: 1px solid $base-border-color;
+    padding: $base-spacing;
+    text-align: center;
+  }
+
+  .form-heading {
+    font-size: 16px;
+    margin-bottom: $base-spacing;
+  }
+}
+
+.onboarding-progress {
+  @include span-columns(6 of 12);
+  @include shift(3);
+  margin-bottom: $base-spacing;
+
+  .progress-steps {
+    list-style: none;
+
+    li {
+      @include span-columns(4 of 12);
+      float: left;
+
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.button-options {
+  .or {
+    margin: 0 10px;
+  }
+}
+
+.server-option {
+  border: 1px solid $base-border-color;
+  border-radius: $base-border-radius;
+  border-collapse: collapse;
+  margin-bottom: 5px;
+  width: 100%;
+
+  &.without-borders {
+    border: 0;
+
+    .option-image {
+      border: 0;
+    }
+  }
+
+  .option-heading {
+    border-bottom: 1px solid $base-border-color;
+    font-size: 16px;
+    font-weight: normal;
+    padding: $base-spacing / 2;
+  }
+
+  .option-description {
+    padding: $base-spacing / 2;
+    vertical-align: middle;
+  }
+
+  .option-explanation {
+    color: #444;
+    font-size: 0.8em;
+  }
+
+  .choose-option {
+    padding: $base-spacing;
+    text-align: right;
+    vertical-align: middle;
+    width: 150px;
+  }
+
+  .option-image {
+    border-right: 1px solid $base-border-color;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 100px;
+
+    > img {
+      display: block;
+    }
+
+    &.option-image-icon {
+      background: #666666;
+      color: #ffffff;
+    }
+
+    &.align-top {
+      vertical-align: top;
+    }
+  }
+}
+
+.copy-ssh-key-field {
+  background: #f6f6f6;
+  border: 0;
+  box-shadow: none;
+  font-family: monospace;
+  height: 160px;
+}
+
+.ssh-port-field {
+  display: inline-block;
+  width: 100px;
+}
+
+.form-groups-inline {
+  @include row();
+  .form-group {
+    @include span-columns(6 of 12);
+    margin-bottom: 0;
+  }
+}
+
+.connect-server-fields {
+  margin-bottom: 1.5em;
+}
+
+.form-step.error {
+  border-color: $error;
+
+  .option-heading {
+    background: $error;
+    border-color: $error;
+    color: #ffffff;
+    overflow: hidden;
+  }
+}
+
+.form-step.finished {
+  border-color: #019875;
+
+  .option-heading {
+    background: #019875;
+    border-color: #019875;
+    color: #ffffff;
+    overflow: hidden;
+  }
+}
+
+.form-success {
+  color: $success;
+}
+
+.form-error {
+  color: $error;
+}

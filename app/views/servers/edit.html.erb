@@ -1,0 +1,10 @@
+<% title('Server settings') %>
+
+<h1>Server settings</h1>
+
+<%= form_for @server do |f| %>
+  <%= render "server_fields", f: f %>
+  <p>
+    <%= button_tag "Save changes", disabled: @server.working? %>
+  </p>
+<% end %>

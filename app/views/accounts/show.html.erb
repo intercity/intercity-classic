@@ -1,0 +1,22 @@
+<section class="account">
+  <div class="body">
+    <div class="container">
+      <%= render "shared/account_navigation", active: "settings" %>
+      <section class="body">
+        <%= render partial: 'application/flash_messages' %>
+        <%= form_for @user, url: account_path, method: :patch do |f| %>
+          <div>
+            <%= f.label :digitalocean_access_token, "DigitalOcean Personal Access Token" %>
+            <%= f.text_field :digitalocean_access_token, placeholder: "Your digitalocean access token" %>
+            <small>You can find this on your DigitalOcean profile page.
+            <a href="https://cloud.digitalocean.com/settings/applications" target="_blank">Click here to go there</a></small>
+          </div>
+          <hr/>
+          <div>
+            <%= f.submit "Save settings", class: "button" %>
+          </div>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+<% title("Login - Intercity") %>
+
+<section class="login">
+  <h1>Sign in to Intercity</h1>
+  <% if Settings.intercity.signup_enabled %>
+    <p>Don't have an account? <%= link_to "Sign up for free", Settings.intercity.signup_url %></p>
+  <% end %>
+
+  <%= render partial: 'application/flash_messages' %>
+
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <p><%= f.email_field :email, :autofocus => true, placeholder: 'Email' %></p>
+    <p><%= f.password_field :password, placeholder: "Password" %></p>
+    <p class="submit"><%= button_tag "Log in" %></p>
+    <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <% end %>
+
+</section>

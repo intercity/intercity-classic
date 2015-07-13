@@ -1,0 +1,25 @@
+<% if @connected %>
+    parent = $("[data-role~=form-step-ssh]");
+    setTimeout(function() {
+      var page_continue;
+      parent.addClass("finished");
+      parent.find("[data-form-area=initial]").addClass("hidden");
+      parent.find("[data-form-area=working]").addClass("hidden");
+      parent.find("[data-form-area=finished]").removeClass("hidden");
+      parent.find("[data-form-area=error]").addClass("hidden");
+      page_continue = $("[data-role=page-continue]");
+      return parent.find(".option-description").slideUp(function() {
+        return setTimeout(function() {
+          page_continue.removeAttr("disabled");
+          return page_continue.removeClass("hidden");
+        }, 100);
+      });
+    }, 1000);
+<% else %>
+    container = $("[data-role~=form-step-ssh]");
+    container.find("[data-form-area=initial]").removeClass("hidden");
+    container.find("[data-form-area=working]").addClass("hidden");
+    container.find("[data-form-area=error]").removeClass("hidden");
+    container.find("button").removeClass("hidden");
+    container.addClass("error");
+<% end %>

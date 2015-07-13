@@ -1,0 +1,98 @@
+$nav-background: #1f2d3b;
+$nav-tint-percentage: 5;
+$nav-shade-percentage: 40;
+
+section.nav_wrapper {
+  background-color: $nav-background;
+}
+
+nav {
+  @include outer-container;
+
+  div.main {
+    @include span-columns(8);
+  }
+
+  h1 {
+    display: inline-block;
+    float: left;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+    a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0 20px;
+      line-height: 58px;
+      display: block;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  div.account-menu {
+    font-size: 12px;
+    line-height: 60px;
+    height: 60px;
+    float: right;
+    a {
+      img {
+        vertical-align: middle;
+        border-radius: 36px;
+        margin-right: 10px;
+        width: 36px;
+      }
+      display: inline-block;
+      padding: 0 20px;
+      color: #fff;
+      text-decoration: none;
+      &:hover {
+        background: tint($nav-background, $nav-tint-percentage);
+      }
+      &.active {
+        background: shade($nav-background, $nav-shade-percentage);
+        color: #fff;
+      }
+    }
+    a.logout {
+      width: 60px;
+      text-align: center;
+    }
+  }
+
+  a.section, span.section {
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    font-weight: normal;
+    text-shadow: rgba(0,0,0,0.5) 0 1px 0px;
+    z-index: 1;
+    line-height: 58px;
+    float: left;
+    i {
+      margin-right: 10px;
+    }
+  }
+  a.section {
+    &:hover {
+      background-color: tint($nav-background, $nav-tint-percentage);
+      color: #fff;
+    }
+    &:active {
+      background-color: rgba(0,0,0,0.3);
+    }
+    &.active {
+      @include transition(none);
+      background-color: shade($nav-background, $nav-shade-percentage);
+      color: #fff;
+    }
+  }
+}

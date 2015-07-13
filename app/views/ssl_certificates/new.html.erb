@@ -1,0 +1,22 @@
+<%= title("Application: #{current_app.name}: Add SSL certificate") %>
+<%= render "applications/app_navigation" %>
+<section class="ssl_certificates">
+  <%= form_for current_app, url: ssl_certificates_path(current_app.server, current_app), method: :post do |f| %>
+    <% if current_app.errors.any? %>
+      <section id="flash_messages">
+        <div class="alert error">
+          <%= current_app.errors.full_messages.join("<br/>").html_safe %>
+        </div>
+      </section>
+    <% end %>
+    <p>
+      <%= f.label :cert, "Certificate file" %>
+      <%= f.file_field :cert %>
+    </p>
+    <p>
+      <%= f.label :key, "Certificate key" %>
+      <%= f.file_field :key %>
+    </p>
+    <%= f.submit "Enable SSL certificate", class: "button", disabled: current_app.server.working? %>
+  <% end %>
+</section>

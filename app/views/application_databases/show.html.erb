@@ -1,0 +1,27 @@
+<% title("Server: #{current_app.server.name}: Configure database") %>
+
+<%= render "applications/app_navigation" %>
+
+<%= form_for current_app, url: database_path(current_app.server, current_app) do |f| %>
+  <p>
+    <% if current_app.use_database_from_other_application %>
+    Connected to database from application deployment <b><%= current_app.connect_to_database_from_application.name %></b>.
+    <% else %>
+    This application deployment is using it's own database.
+    <% end %>
+  <p>
+    <label>
+      <%= f.check_box :use_database_from_other_application, data: { action: "toggle-database-chooser" } %>
+      Use database from an other deployment
+    </label>
+    Check this option if you want this deployment to connect to a database from another application. With this option you can demo a feature branch with the same data as your production database.
+  </p>
+  <p id="database-chooser">
+    <%= f.collection_select :connect_to_database_from_application_id, current_server.applications.reject { |a| a == current_app }, :id, :name, include_blank: "(choose application)" %>
+  </p>
+  <p class="submit">
+    <%= button_tag "Save changes", disabled: current_app.server.working? %>
+    or
+    <%= link_to "Go back", server_path(current_app.server) %>
+  </p>
+<% end %>

@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+# Install Phusion PGP key
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
+
+# Add HTTPS support for APT
+sudo apt-get install apt-transport-https ca-certificates
+
+# Add new deb source
+echo "deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main" > /etc/apt/sources.list.d/passenger.list
+
+# Secure passenger.list
+sudo chown root: /etc/apt/sources.list.d/passenger.list
+sudo chmod 600 /etc/apt/sources.list.d/passenger.list
+sudo apt-get update
+
+# Install passenger/nginx
+sudo apt-get install nginx-extras passenger
+
+rm /etc/nginx/sites-enabled/default
+cp lib/support/nginx.conf /etc/nginx/nginx.conf
+cp lib/support/intercity /etc/nginx/sites-enabled
+sudo service nginx restart
+echo "Done!"
+

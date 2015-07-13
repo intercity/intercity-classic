@@ -1,0 +1,174 @@
+$lighter-gray: #eee;
+
+form.new_application, form.edit_application {
+  input#application_name, input#application_domain_names {
+    width: 100%;
+  }
+
+  .advanced-settings {
+    margin: 20px 0;
+
+    .toggle-inputs {
+      border: 1px solid $lighter-gray;
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: -1px;
+      padding: 10px;
+
+      i {
+        font-size: 10px;
+        vertical-align: middle;
+        width: 10px;
+      }
+    }
+
+    table {
+      border: 1px solid $lighter-gray;
+      display: none;
+      margin: 0;
+      padding-left: 30px;
+      padding-top: 20px;
+
+      td {
+        border: none;
+        border-bottom: 1px solid $lighter-gray;
+        margin: 0;
+        padding: 10px;
+        vertical-align: middle;
+
+        label {
+          margin-bottom: 0;
+        }
+
+        .hint {
+          color: #aaa;
+          font-size: 14px;
+          margin-top: 0;
+        }
+
+        &.max-body-size {
+          input {
+            border-bottom-left-radius: $base-border-radius;
+            border-radius: 0;
+            border-right: none;
+            border-top-left-radius: $base-border-radius;
+            display: inline-block;
+            margin-right: 0;
+            width: 100px;
+          }
+
+          span {
+            background: #eee;
+            border: 1px solid #aaa;
+            border-bottom-right-radius: $base-border-radius;
+            border-top-right-radius: $base-border-radius;
+            display: inline-block;
+            line-height: 34px;
+            margin-left: 0;
+            padding: 0 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.settings-section {
+  border: 1px solid #ccc;
+  border-radius: $base-border-radius;
+  margin-bottom: $base-spacing;
+
+  h2 {
+    background: #eee;
+    font-size: 18px;
+    padding: $base-padding;
+  }
+
+  .settings-content {
+    padding: $base-padding;
+  }
+
+}
+
+table.applications {
+  th {
+    &.action {
+      &.edit {
+        width: 50px;
+      }
+      &.deploy, &.env_vars {
+        width: 120px;
+      }
+    }
+  }
+  td.deleting {
+    text-align: center;
+  }
+}
+
+div.application_navigation {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  margin-bottom: 10px;
+
+  span, a {
+    display: inline-block;
+    padding: 4px 6px;
+    margin-right: 5px;
+  }
+
+  span.application_name {
+    font-weight: bold;
+    padding: 4px 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000;
+    border-radius: 3px;
+    &:hover {
+      background-color: #eee;
+    }
+  }
+
+  a:active {
+    background-color: #555;
+    color: #fff;
+  }
+
+  a.active {
+    background-color: #555;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.modal-dialog {
+  h2 {
+    padding: $base-spacing / 2;
+  }
+  .modal-content {
+    padding: $base-spacing / 2;
+  }
+}
+
+.remove-application {
+  border: 1px solid $error-dark-color;
+  border-radius: $base-border-radius;
+
+  h2 {
+    background: $error-dark-color;
+    color: #ffffff;
+    font-size: 18px;
+    padding: $base-padding;
+  }
+
+  p {
+    margin: $base-padding;
+  }
+
+  .button {
+    background: $error-dark-color;
+  }
+}
+

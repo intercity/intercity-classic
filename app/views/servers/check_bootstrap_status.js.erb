@@ -1,0 +1,9 @@
+<% if @server.bootstrapped? %>
+  $('div#applying h1').html('<i class="fa fa-check fa-fw"></i> <strong><%= @server.address %></strong> successfully connected');
+  $('div#applying .body').html('<%= j render("bootstrapping_done") %>')
+  clearInterval(window.bootstrappingCheckIntervalId)
+<% elsif !@server.working? && @server.last_error.present? %>
+  $('div#applying h1').html('<i class="fa fa-warning fa-fw"></i> Could not connect with <strong><%= @server.address %></strong>')
+  $('div#applying .body').html('<%= j render("bootstrapping_error") %>')
+  clearInterval(window.bootstrappingCheckIntervalId)
+<% end %>

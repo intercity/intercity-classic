@@ -1,0 +1,110 @@
+@mixin button($color: #4294F0) {
+  @extend %button;
+  display: inline-block;
+  background-color: $color;
+  font-size: 16px;
+  @include appearance(none);
+  border-radius: 3px;
+  padding: 10px 18px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  i {
+    margin-right: 6px;
+  }
+  &:hover {
+    background-color: darken($color, 8%);
+    text-decoration: none
+  }
+  &:active {
+    background-color: darken($color, 12%);
+    box-shadow: rgba(#000, 0.2) 0 1px 10px inset;
+    color: #fff;
+  }
+  &:focus {
+    color: #fff;
+  }
+  &:disabled {
+    background-color: #eee;
+    color: #ccc;
+  }
+  &:disabled:active {
+    box-shadow: none;
+  }
+}
+
+.button,
+button,
+.btn {
+  @include button();
+
+  &.btn-danger {
+    @include button(#fff);
+    border: 1px solid #ccc;
+    color: #c00;
+
+    &:hover {
+      color: #c00;
+    }
+  }
+
+  &.table-action,
+  &.btn-table-action {
+    @include button(#fff);
+    border: 1px solid #ccc;
+    box-shadow: #f0f0f0 0 1px 1px;
+    color: #4294f0;
+    font-size: 13px;
+    font-weight: normal;
+    margin-left: 20px;
+    padding: 6px 12px;
+    text-shadow: #fff 0 1px 0;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+
+.button.continue,
+.btn-continue {
+  padding-right: 40px;
+  position: relative;
+
+  &:after {
+    bottom: 0;
+    content: "\f105";
+    font-family: "FontAwesome";
+    padding: 10px 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+
+.button.problem {
+  @include button(#c00);
+  color: #fff;
+}
+
+.remove {
+  @include button(#fff);
+  color: #c00;
+  border: 1px solid #ccc;
+
+  &:hover {
+    color: #c00;
+  }
+}
+
+.button.small,
+.btn-small {
+  font-size: 12px;
+  padding: 8px;
+  margin-bottom: 0.75em;
+}
+

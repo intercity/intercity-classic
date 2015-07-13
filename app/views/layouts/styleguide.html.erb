@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title).present? ? yield(:title) : "Intercity" %></title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "https://js.stripe.com/v2/", "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div class="container styleguide">
+  <header><h1>Intercity Styleguide</h1></header>
+  <section class="nav">
+    <ul>
+      <li><%= link_to "Typography", styleguide_path(category: "typography") %></li>
+      <li><%= link_to "Buttons", styleguide_path(category: "buttons") %></li>
+    </ul>
+  </section>
+  <section class="body">
+    <%= yield %>
+  </section>
+</div>
+</body>
+</html>

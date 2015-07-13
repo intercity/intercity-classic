@@ -1,0 +1,24 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+new: &DEFAULT
+  name: Intercity
+  address: localhost
+  ssh_port: 22
+  owner: michiel
+  wizard_finished: true
+
+bootstrapped:
+  <<: *DEFAULT
+  name: Bootstrapped server
+  bootstrapped: true
+  username: intercity
+  db_type: mysql
+
+new_vagrant_server:
+  <<: *DEFAULT
+  ssh_port: 2222
+
+postgres:
+  <<: *DEFAULT
+  db_type: postgres
+  ssh_port: 2222

@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+secret_key:
+  application: intercity_beta
+  key: secret_key
+  value: abcd
+
+rails_env:
+  application: intercity_beta
+  key: rails_env
+  value: acceptance
+
+env_var_two:
+  application: chef_builder_app1
+  key: env_var_two
+  value: super key

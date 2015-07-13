@@ -1,0 +1,37 @@
+section.guide {
+  font-size: 14px;
+  section.introduction {
+    line-height: 1.5;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  section p {
+    margin: 20px;
+  }
+  section.step {
+    margin-bottom: 40px;
+    border-bottom: 1px solid #eee;
+    .gist {
+      margin: 10px 40px;
+    }
+    pre.snippet {
+      padding: 10px 40px;
+      margin: 10px 0;
+      font-size: 14px;
+      background-color: #333;
+      color: #fff;
+    }
+    h1 {
+      padding: 0 40px;
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+section.wide_window.guide p {
+  padding: 0 20px;
+}

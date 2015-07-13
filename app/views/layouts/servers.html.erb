@@ -1,0 +1,72 @@
+<% content_for :content do %>
+
+  <div class="back-to-overview-nav">
+    <div class="container">
+      <%= link_to app_overview_path, class: "back-link" do %>
+        <%= fa_icon "angle-up fw" %> Back to all apps and servers
+      <% end %>
+    </div>
+  </div>
+
+
+  <section class="server">
+    <header style="border-bottom: 1px solid #ccc;">
+
+      <div class="container page" style="margin-bottom: 0; margin-top: 0;">
+        <h1><%= fa_icon "fw server" %> <%= link_to current_server.name, server_path(current_server) %>
+        <span class="address"><%= current_server.address %> - <%= I18n.t "server.db_type_options.#{current_server.db_type}" %></span></h1>
+      <div class="actions">
+        <% if current_server.working? %>
+          <div class="server_status" data-server-state="working">
+            <i class="fa fa-spin fa-repeat fa-fw"></i> Applying changes...
+          </div>
+        <% end %>
+      </div>
+
+      <%= render "servers/ssh_key_warning" %>
+    </header>
+
+    <div class="container page" style="margin-top: 0;">
+    <section class="sidebar">
+      <ul>
+        <li class="applications <%= active_on(applications_path(current_server), exact_match: false) %>"><%= link_to "Applications", server_path(current_server), class: "menu_item_heading" %>
+          <ul>
+            <% current_server.applications.each do |application| %>
+              <% if application.persisted? && !application.deleting? %>
+                <li class="application <%= active_on(application_path(current_server, application), exact_match: false) %>">
+                  <%= fa_icon "cube fw" %>
+                  <%= link_to application.name, edit_application_path(current_server, application) %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </li>
+        <li class="<%= active_on(ssh_keys_path(current_server)) %>"><%= link_to "Deploy access", ssh_keys_path(current_server) %></li>
+        <% if current_server.bootstrapped?%>
+          <li class="<%= active_on(log_server_path(current_server)) %>"><%= link_to "View latest log", log_server_path(current_server) %></li>
+        <% else %>
+          <li class="<%= active_on(log_server_path(current_server)) %>"><%= link_to "View latest log", log_server_path(current_server), target: "_blank" %></li>
+        <% end %>
+        <li class="<%= active_on(edit_server_path(current_server)) %>"><%= link_to "Settings", edit_server_path(current_server) %></li>
+      </ul>
+
+      <p class="remove_server">
+        <%= link_to remove_server_path(current_server) do %>
+          <i class="fa fa-trash-o"></i> Remove this server
+        <% end %>
+      </p>
+    </section>
+
+    <section class="page">
+      <%= yield %>
+      <%= render "shared/server_apply_error" %>
+    </section>
+
+    </div>
+
+  </section>
+
+
+<% end %>
+
+<%= render template: "layouts/application" %>

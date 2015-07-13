@@ -1,0 +1,84 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  Include:
+    - "**/Rakefile"
+    - "**/config.ru"
+  Exclude:
+    - "db/**/*"
+    - "config/**/*"
+    - "script/**/*"
+    - "test/**/*"
+    - "chef-repo/**/*"
+    - "vendor/**/*"
+    - "bin/**/*"
+  RunRailsCops: true
+  DisplayCopNames: true
+  StyleGuideCopsOnly: false
+Style/AndOr:
+  # Whether `and` and `or` are banned only in conditionals (conditionals)
+  # or completely (always).
+  EnforcedStyle: always
+  Enabled: true
+Style/CommentAnnotation:
+  Keywords:
+    - TODO
+    - FIXME
+    - OPTIMIZE
+    - HACK
+    - REVIEW
+Style/DotPosition:
+  EnforcedStyle: trailing
+  Enabled: true
+Style/For:
+  EnforcedStyle: each
+  SupportedStyles:
+    - for
+    - each
+  Enabled: true
+Style/IndentationWidth:
+  # Number of spaces for each indentation level.
+  Width: 2
+Style/NonNilCheck:
+  # With `IncludeSemanticChanges` set to `true`, this cop reports offenses for
+  # `!x.nil?` and autocorrects that and `x != nil` to solely `x`, which is
+  # **usually** OK, but might change behavior.
+  #
+  # With `IncludeSemanticChanges` set to `false`, this cop does not report
+  # offenses for `!x.nil?` and does no changes that might change behavior.
+  IncludeSemanticChanges: true
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+Style/TrailingBlankLines:
+  EnforcedStyle: final_newline
+  SupportedStyles:
+    - final_newline
+    - final_blank_line
+Metrics/LineLength:
+  Max: 110
+  # To make it possible to copy or click on URIs in the code, we allow lines
+  # contaning a URI to be longer than Max.
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 40
+Style/Next:
+  Enabled: false
+Lint/AssignmentInCondition:
+  Enabled: false
+Style/Documentation:
+  Description: Document classes and non-namespace modules.
+  Enabled: false
+Style/ExtraSpacing:
+  Enabled: true
+Style/ClassAndModuleChildren:
+  Enabled: false
+Rails/TimeZone:
+  Enabled: false
+Rails/Date:
+  Enabled: false

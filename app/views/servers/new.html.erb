@@ -1,0 +1,113 @@
+<% title("Install a new server") %>
+
+<section class="servers">
+<div class="body">
+  <div class="container">
+    <section class="center_window">
+      <header>
+        <h1>Install a new server</h1>
+      </header>
+      <% if @server.errors.any? %>
+        <section class="form_errors">
+          <ul>
+            <% @server.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </section>
+      <% end %>
+      <%= form_for @server, url: @server.persisted? ? bootstrap_server_path(@server) : servers_path, method: :post, html: { class: 'new_server' } do |f| %>
+        <%= f.hidden_field :provider %>
+        <div class="input-group">
+          <%= f.label :name, "Server Name" %>
+          <%= f.text_field :name, placeholder: 'MyApp Server' %>
+        </div>
+        <div class="connection-type-selection input-group">
+          <h2>Server provider</h2>
+          <div data-action="type-selection" class="type-selection <%= "active" if @server.metal? %>" id="metal">
+            <h2>My own server</h2>
+            <p>When selecting your own server, you have to install a server with Ubuntu and provide us with a username and password to the server.</p>
+          </div>
+          <div data-action="type-selection" class="type-selection <%= "active" if @server.digitalocean? %>
+            <%= "inactive" if current_user.digitalocean_access_token.to_s.empty? %>" id="digitalocean">
+            <h2>DigitalOcean</h2>
+            <% if current_user.digitalocean_access_token.present? %>
+              <p>When you select DigitalOcean, we will create a droplet in your DigitalOcean account, you only have to select the region, the rest we will do for you!</p>
+            <% else %>
+              <p>This option is not available until you add a DigitalOcean Access Token to your account settings.
+                <%= link_to "You can do so here.", account_path %></p>
+            <% end %>
+          </div>
+        </div>
+        <div class="server-type <%= "hidden" unless @server.metal? %>" data-server-type="metal">
+          <div class="input-group">
+            <h2>Connect with the server on</h2>
+
+            <p class="server_address">
+              <%= f.label :address, "IP address or hostname" %>
+              <%= f.text_field :address, placeholder: 'myapp.com' %>
+            </p>
+
+            <p class="server_ssh_port">
+              <%= f.label :ssh_port, 'SSH port' %>
+              <%= f.text_field :ssh_port, placeholder: '22' %>
+            </p>
+
+            <p class="server_username">
+              <%= label_tag :username, "Username" %>
+              <%= text_field_tag :username, @server.username || '', placeholder: 'root' %>
+            </p>
+
+            <p class="server_password">
+              <%= label_tag :password %>
+              <%= password_field_tag :password, '', placeholder: 'password' %>
+            </p>
+
+            <p class="username_password_once">The username and password will not be stored in our database. We use them only one time to connect your server to your account.</p>
+
+          </div>
+        </div>
+        <div class="server-type <%= "hidden" unless @server.digitalocean? %>" data-server-type="digitalocean">
+          <div class="input-group">
+            <h2>Select the region you want your server to be in</h2>
+            <label>
+              <%= f.radio_button :digitalocean_region, "amsterdam" %> Amsterdam
+            </label>
+            <label>
+              <%= f.radio_button :digitalocean_region, "new_york" %> New York
+            </label>
+            <label>
+              <%= f.radio_button :digitalocean_region, "london" %> London
+            </label>
+            <label>
+              <%= f.radio_button :digitalocean_region, "frankfurt" %> Frankfurt
+            </label>
+            <label>
+              <%= f.radio_button :digitalocean_region, "singapore" %> Singapore
+            </label>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <h2>Choose the database you want to use</h2>
+          <div class="radiobutton-group">
+            <label>
+              <%= f.radio_button :db_type, 'postgres' %>
+              PostgreSQL
+            </label>
+            <label>
+              <%= f.radio_button :db_type, 'mysql' %>
+              MySQL
+            </label>
+          </div>
+        </div>
+        <p class="submit">
+          <button><i class="fa fa-arrow-right"></i>Start installation</button>
+          or
+          <%= link_to 'Cancel', dashboard_path %>
+        </p>
+      <% end %>
+    </section>
+  </div>
+</div>
+</section>

@@ -1,0 +1,39 @@
+<div class="container page">
+  <%= render "onboarding/progress", active: "add_app" %>
+  <div class="onboarding-page">
+    <h1 class="onboarding-heading">New application</h1>
+
+    <%= render "flash_messages" %>
+
+    <%= form_for @onboarding, url: setup_app_path, method: :post do |f| %>
+    <div class="onboarding-page-content">
+
+      <div class="form-group <%= "field_with_errors" if validation_errors?(@onboarding, :name) %>">
+        <%= f.label :name do%>
+          App name
+        <% end %>
+        <%= f.text_field :name, class: "app-subdomain" %>
+        <%= validation_errors(@onboarding, :name) %>
+        <p><small>Your app name can contain a-z, 0-9 and _. </small></p>
+      </div>
+
+      <div class="form-group <%= "field_with_errors" if validation_errors?(@onboarding, :ruby_version) %>">
+        <%= f.label :ruby_version %>
+        <%= f.select :ruby_version, Application::RUBY_VERSIONS %>
+        <%= validation_errors(@onboarding, :ruby_version) %>
+      </div>
+
+      <div class="form-group <%= "field_with_errors" if validation_errors?(@onboarding, :db_type) %>">
+        <%= f.label :db_type, "Database" %>
+        <%= f.select :db_type, [['PostgreSQL', "postgresql"], ['MySQL', "mysql"]] %>
+        <%= validation_errors(@onboarding, :db_type) %>
+      </div>
+    </div>
+    <div class="onboarding-buttons">
+      <p>In the next step you will set up a server</p>
+      <%= f.button "Continue", class: "continue button" %>
+    </div>
+  <% end %>
+  </div>
+
+</div>

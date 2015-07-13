@@ -1,0 +1,108 @@
+<div class="container page">
+  <%= render "onboarding/progress", active: "server_setup" %>
+  <div class="onboarding-page">
+    <h1 class="onboarding-heading">Connect your VPS</h1>
+      <%= render "flash_messages" %>
+      <div class="onboarding-page-content">
+        <form method="post" class="server-option connect-server-fields form-step" data-role="form-step-ip form-step">
+          <h2 class="option-heading">
+            1. Enter connection details
+            <span style="float: right" data-form-area="finished" class="hidden">
+              <%= fa_icon "check" %>
+            </span>
+            <span style="float: right" data-form-area="error" class="hidden">
+              <%= fa_icon "exclamation-circle" %>
+            </span>
+          </h2>
+          <div class="option-description">
+            <div class="form-groups-inline">
+              <div class="form-group">
+                <label>IP address or hostname</label>
+                <input type="text" name="ip" data-form-field="ip" placeholder="IP address or hostname.">
+              </div>
+              <div class="form-group">
+                <label>SSH Port</label>
+                <input type="text" name="port" value="22" class="ssh-port-field" data-form-field="port">
+              </div>
+            </div>
+            <p><button class="btn btn-continue" data-server-test-url="<%= setup_test_ip_path %>"
+                data-action="test-server-connection">Test connection</button></p>
+
+            <div class="hidden" data-form-area="working">
+              <%= fa_icon "pulse spinner fw" %> Trying to connect...
+            </div>
+            <div class="form-success hidden" data-form-area="finished">
+              <%= fa_icon "check" %> We can reach your server on port <span id="ssh-port-no">22</span>. Nice!
+            </div>
+            <div class="form-error hidden" data-form-area="error">
+              <%= fa_icon "exclamation-circle" %> We can't reach your server on port
+              <span id="ssh-port-no">22</span>.
+            </div>
+          </div>
+        </form>
+
+        <form method="post" class="server-option form-step" id="install-ssh-key-fields" data-role="form-step form-step-ssh" style="opacity: 0.3">
+          <h2 class="option-heading">
+            2. Install the SSH key
+            <span style="float: right" data-form-area="finished" class="hidden">
+              <%= fa_icon "check" %>
+            </span>
+            <span style="float: right" data-form-area="error" class="hidden">
+              <%= fa_icon "exclamation-circle" %>
+            </span>
+          </h2>
+
+          <div class="option-description">
+            <p class="small">Now add the following SSH key to the
+            <code>~/.ssh/authorized_keys</code> file of the root or a sudo user.
+            This allows Intercity to connect to your server via SSH.</p>
+
+            <div class="form-group">
+              <label>Username</label>
+              <input id="ssh-username-field" data-form-field="user" type="text" placeholder="For example: root" value="root">
+            </div>
+
+            <div class="form-group">
+              <label>Copy-paste this public SSH key to your server:</label>
+              <p><a href="#" onclick="Intercom('showNewMessage',
+                'Hey! I need some help adding the SSH key to my server. Can you help me?\n\n');
+                return false;"><%= fa_icon "question-circle" %>  I don't know what to do</a></p>
+            <p>
+              <textarea disabled="disabled" class="copy-ssh-key-field">
+<%= @ssh_key.ssh_public_key -%>
+              </textarea>
+              <p><button class="btn btn-continue" data-action="verify-ssh-key"
+                data-server-test-url="<%= setup_test_ssh_path %>">
+                I've installed the key
+              </button></p>
+            </p>
+            </div>
+            <div class="hidden" data-form-area="working">
+              <%= fa_icon "pulse spinner fw" %> Trying to connect...
+            </div>
+            <div class="form-error hidden" data-form-area="error">
+              <%= fa_icon "exclamation-circle" %> We can't connect to your server as a sudo user.
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="onboarding-buttons hidden" data-role="page-continue" >
+          <p class="form-success"><%= fa_icon "check" %> Server connected!</p>
+          <p>Continue to the next step where you can start the installation of your server.</p>
+      </div>
+
+
+      <div class="onboarding-buttons">
+        <div class="button-options">
+          <%= link_to setup_provider_path, class: "cancel-link" do %>
+            <%= fa_icon "angle-left fw" %> Back
+          <% end %>
+          <span class="or">or</span>
+          <%= button_to "Continue", setup_custom_server_summary_path, class: "btn btn-continue",
+            disabled: true, data: { role: "page-continue" }, method: :get %>
+        </div>
+      </div>
+  </div>
+
+</div>

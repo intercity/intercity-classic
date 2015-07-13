@@ -1,0 +1,27 @@
+<section class="deploy_keys">
+  <table class="applications">
+    <thead>
+      <tr>
+        <th class="name" colspan="2">Developer deploy access <%= link_to new_ssh_key_path(current_server), class: 'button table-action' do %>
+          <i class="fa fa-plus"></i> Add a SSH key<% end %></th>
+        <th style="width: 50px;">
+        </th>
+      </tr>
+    </thead>
+    <% if current_server.ssh_keys.any? %>
+      <% current_server.ssh_keys.each do |key| %>
+        <tr>
+          <td><%= key.name %></td>
+          <td><%= key.key[0..30] %>...</td>
+          <td class="action" style="width: 50px;"><%= link_to ssh_key_path(current_server, key), method: :delete, data: { confirm: 'Are you sure you want to revoke deploy access for this key?' } do %>
+            <i class="fa fa-trash-o"></i>
+            <% end %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td class="blank_slate" colspan="3">This page shows all the SSH keys that have deploy access for the applications on this server. We recommend that you add your own key. You can do that by clicking the <strong>Add a SSH key</strong> button above.</td>
+      </tr>
+    <% end %>
+  </table>
+</section>

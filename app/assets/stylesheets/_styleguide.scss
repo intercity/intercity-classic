@@ -1,0 +1,39 @@
+.styleguide {
+  @include outer-container;
+  .nav {
+    @include span-columns(2);
+  }
+  .body {
+    @include span-columns(10);
+    .section {
+      border-bottom: 1px solid #e5e5e5;
+      padding: 10px;
+      h2.custom {
+        padding: 10px;
+        margin: 10px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      .docs-example {
+        position: relative;
+        padding: 15px;
+        line-height: 1.4;
+        border: 1px solid #e5e5e5;
+        border-radius: .25rem .25rem 0 0;
+      }
+      .highlight {
+        margin-top: -1px;
+        border: 1px solid #e5e5e5;
+        border-radius: 0 0 .25rem .25rem;
+        pre {
+          margin: 0px;
+          padding: 16px;
+          overflow: auto;
+          font-size: 85%;
+          line-height: 1.45;
+          background-color: #f7f7f7;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+}

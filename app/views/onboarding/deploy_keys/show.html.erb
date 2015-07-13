@@ -1,0 +1,22 @@
+<div class="container page">
+  <%= render "onboarding/progress", active: "deploy_app" %>
+  <div class="onboarding-page">
+    <h1 class="onboarding-heading">Add your SSH deploy key</h1>
+    <div class="onboarding-buttons" data-server-state="working">
+      <%= fa_icon "spinner pulse fw lg" %> Adding your SSH key...
+    </div>
+    <div class="onboarding-buttons hidden" data-server-state="idle">
+      <p><%= fa_icon "check lg fw" %><b>SSH key added</b></p>
+      <p>The next step will tell you how to deploy your app</p>
+      <p><%= link_to "Continue", deploy_application_path(@onboarding.server, @onboarding.application), class: "btn btn-continue"  %>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  $(document).ready(function() {
+    clearTimeout(window.onboarding_poller);
+    window.onboarding_poller = setTimeout(function() { $.get("<%= setup_poll_path(@onboarding) %>")}, 3000);
+  });
+</script>

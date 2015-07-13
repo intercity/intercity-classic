@@ -1,0 +1,23 @@
+<div class="container page">
+  <%= render "onboarding/progress", active: "deploy_app" %>
+  <div class="onboarding-page">
+    <h1 class="onboarding-heading">Add your SSH deploy key</h1>
+    <%= render "flash_messages" %>
+    <%= form_for @ssh_key, url: setup_deploy_key_path, method: :post do |f| %>
+      <div class="onboarding-page-content">
+        <p>You're almost ready to deploy your app. One thing you need to do is
+        add the SSH key from your workstation to the server.
+        This gives you access to deploy <b>appname</b>.</p>
+        <div class="form-group <%= "field_with_errors" if validation_errors?(@ssh_key, :key) %>">
+          <%= f.label :key, "Paste your SSH key here" %>
+          <%= f.text_area :key %>
+          <%= validation_errors(@ssh_key, :key) %>
+          <p><small>You can find your key in <code>~/.ssh/id_rsa.pub</code>.</small></p>
+        </div>
+      </div>
+      <div class="onboarding-buttons">
+        <%= f.button "Add this key", class: "btn btn-continue" %>
+      </div>
+    <% end %>
+  </div>
+</div>

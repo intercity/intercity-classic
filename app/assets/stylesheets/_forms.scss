@@ -1,0 +1,66 @@
+form {
+  .field_with_errors {
+    label,
+    small {
+      color: $dark-red;
+    }
+
+    #{$all-text-inputs} {
+      border: 1px solid $dark-red;
+    }
+  }
+  // scss-lint:disable all
+  // We have to disable linting for this block, otherwise hound will keep
+  // wining. This is a non-overridable rails default
+  &.button_to {
+    display: inline-block;
+  }
+  // scss-lint:enable all
+
+  label {
+    display: block;
+    font-weight: bold;
+  }
+
+  span.hint {
+    display: block;
+    color: #333;
+    margin: 4px 0;
+    font-size: 14px;
+  }
+
+   #{$all-text-inputs} {
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    padding: 6px 8px;
+  }
+
+  textarea {
+    border-radius: 3px;
+  	border: 1px solid #aaa;
+  	padding: 6px 8px;
+  	margin: 4px 0;
+  	box-shadow: #ccc 0 1px 0 inset;
+  }
+
+  .form-group {
+    padding-bottom: 1em;
+  }
+
+  input {
+
+    &.app-subdomain {
+      display: inline-block;
+      margin: 0;
+      width: 200px;
+    }
+  }
+}
+
+section.form_errors {
+  color: #c00;
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+}

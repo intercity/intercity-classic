@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+intercity_beta:
+  name: intercity_beta
+  domain_names: beta.intercityup.nl
+  server: bootstrapped
+
+chef_builder_app1:
+  name: Chef_1
+  domain_names: "chef1.com chef2.biz"
+  redirect_domain_names: "www.chef1.com"
+  client_max_body_size: "200m"
+  server: postgres
+  database_host: 12.23.43.1
+  database_name: chef1
+  enable_ssl: false
+  ruby_version: 1.8.7
+  rails_environment: staging
+  deploy_user: deployer
+remove_app:
+  name: remove
+  server: postgres

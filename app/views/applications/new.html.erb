@@ -1,0 +1,25 @@
+<% title("Add a new application") %>
+
+<h1>New application</h1>
+
+<%= form_for @app, url: applications_path(current_server), method: :post do |f| %>
+
+  <% if @app.errors.any? %>
+    <section class="form_errors">
+      <ul>
+        <% @app.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+
+  <%= render "application_fields", f: f %>
+
+  <p class="submit">
+    <%= button_tag "Create application", disabled: current_server.working? %>
+    or
+    <%= link_to 'Go back', server_path(current_server) %>
+  </p>
+
+<% end %>

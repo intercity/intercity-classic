@@ -1,0 +1,15 @@
+<section class="remove-application">
+  <h2>Are you sure you want to delete the app?</h2>
+  <p>Clicking on "Destroy <%= current_app.name  %>" will result in the following actions being taken:</p>
+  <ul>
+    <li>The app will be removed from the Intercity dashboard</li>
+    <li>Removal of all the application data from your server</li>
+    <% if current_app.backup.enabled? %>
+      <li>All backup jobs for this app will be disabled</li>
+    <% end %>
+    <li>The NGINX configuration for this will be removed</li>
+  </ul>
+  <%= link_to "I'm aware of the consequences. Really delete this application",
+    application_path(current_server, current_app), method: :delete, class: "button danger" %>
+  <p><%= link_to "No, I changed my mind, take me back", edit_application_path(current_server, current_app) %></p>
+</section>

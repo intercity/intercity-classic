@@ -1,0 +1,24 @@
+<div class="container page">
+  <%= render "onboarding/progress", active: "server_setup"  %>
+  <div class="onboarding-page">
+    <h1 class="onboarding-heading">Confirm Server Installation</h1>
+    <%= form_for @onboarding, url: setup_finalize_path, method: :post do |f|  %>
+    <div class="onboarding-page-content">
+      <div class="server-option without-borders">
+        <div class="option-description">
+          <p>We are going to install your server so you can host the <b><%= @onboarding.name %></b> application.</p>
+        </div>
+      </div>
+    </div>
+    <div class="onboarding-buttons">
+      <div class="button-options">
+        <%= link_to setup_custom_server_path, class: "cancel-link" do %>
+          <%= fa_icon "angle-left fw" %> Back
+        <% end %>
+        <span class="or">or</span>
+        <%= f.button "Install my Server", class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

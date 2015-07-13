@@ -1,0 +1,66 @@
+table.plans {
+  margin-bottom: 20px;
+  td,th {
+    text-align: center;
+    border-right: 1px solid #eee;
+  }
+  td:last-child, th:last-child {
+    border-right: 0;
+  }
+  td.subscription-status {
+    text-align: center; font-size: 12px;
+  }
+}
+
+section#subscription_details {
+  form {
+    div.card-fields {
+      @include span-columns(5 of 8);
+      padding: 16px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      background-color: #fafafa;
+      border: 1px solid #f0f0f0;
+    }
+    div.subscription-card-number {
+      @include span-columns(5 of 5);
+    }
+    div.subscription-expiration-date {
+      @include span-columns(3 of 5);
+    }
+    div.subscription-cvc {
+      @include span-columns(2 of 5);
+      @include omega();
+    }
+    div.submit {
+      @include span-columns(8 of 8);
+    }
+    p.subscription-country, p.subscription-tin {
+      padding-left: 16px;
+      @include span-columns(8 of 8);
+    }
+    .vat_field, .cvc_field {
+      width: 70px;
+    }
+    .number_field {
+      width: 100%;
+    }
+    .tin_field {
+      width: 220px;
+    }
+    .expiration_date_field {
+      display: initial;
+    }
+
+    #payment_error {
+      @extend %flash-error;
+    }
+
+    .submit {
+      border-top: 1px solid #eee;
+      padding: 10px 0;
+      padding-left: 16px;
+      margin-top: 20px;
+    }
+  }
+}

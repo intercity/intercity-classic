@@ -1,0 +1,59 @@
+<%= render "applications/app_navigation" %>
+<section class="backups">
+
+  <%= render partial: 'application/flash_messages' %>
+  <%= form_for @backup, url: app_backups_path(current_app.server, current_app), method: :patch do |f| %>
+    <p>
+      <%= f.label :enabled do %>
+        <%= f.check_box :enabled, data: { action: "backup-switch"} %> Enable backups
+      <% end %>
+    </p>
+    <% if @backup.enabled?%>
+      <%= link_to "Create a backup now", force_backups_path(current_app.server, current_app),
+        method: :post, class: "button" %>
+    <% end %>
+    <hr/>
+
+    <% if @backup.errors.any? %>
+      <section class="form_errors">
+      <ul>
+        <% @backup.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </section>
+    <% end %>
+    <div class="backup-settings <%= "hidden" unless @backup.enabled? %>">
+      <p>
+        <%= f.label :storage_type, "Store backups on" %>
+        <%= f.select :storage_type, options_for_select(Backup.storage_types.map { |storage_name, storage_key| [storage_name, storage_name] },
+                                                       @backup.storage_type), data: { action: "storagetype-switch"} %>
+      </p>
+      <div data-storage-type="s3" class="<%= "hidden" unless @backup.s3? %>">
+        <p>Enter your AWS S3 access credentials and bucket in the following fields.<br/>
+        <p>
+          <%= f.label :s3_access_key, "Access key id" %>
+          <%= f.text_field :s3_access_key %>
+        </p>
+        <p>
+          <%= f.label :s3_secret_access_key, "Secret access key" %>
+          <%= f.text_field :s3_secret_access_key %>
+        </p>
+        <p>
+          <%= f.label :s3_bucket, "Bucket" %>
+          <%= f.text_field :s3_bucket %>
+        </p>
+        <p>
+          <%= f.label :s3_region, "Region" %>
+          <%= f.select :s3_region, options_for_select(Backup::AMAZON_REGIONS, @backup.s3_region) %>
+        </p>
+      </div>
+    </div>
+    <div class="submit <%= "hidden" unless current_app.server.working? %>" data-server-state="working">
+      <i class="fa fa-spin fa-repeat fa-fw"></i> Applying changes...
+    </div>
+    <div class="submit <%= "hidden" if current_app.server.working? %>" data-server-state="idle">
+      <%= f.submit "Apply changes", class: 'button' %>
+    </div>
+  <% end %>
+</section>

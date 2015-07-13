@@ -1,0 +1,122 @@
+<section class="section typography">
+  <h1 id="typography">Typography</h1>
+  <p>Headings, paragraphs, blockquotes, lists, and more have some global resets.</p>
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#headings">Headings</a></li>
+    <li><a href="#body-text">Body text</a></li>
+    <li><a href="#inline-text">Inline text elements</a></li>
+    <li><a href="#unordered-list">Unordered list</a></li>
+    <li><a href="#ordered-list">Ordered list</a></li>
+  </ul>
+  <h2 id="headings">Headings</h2>
+  <section class="docs-example">
+    <h1>h1. heading</h1>
+    <h2>h2. heading</h2>
+    <h3>h3. heading</h3>
+    <h4>h4. heading</h4>
+  </section>
+  <section class="highlight js-code-highlighting">
+    <pre><code>
+        <%= h "
+<h1>h1. Primer heading</h1>
+<h2>h2. Primer heading</h2>
+<h3>h3. Primer heading</h3>
+<h4>h4. Primer heading</h4>
+        " -%>
+  </code></pre>
+  </section>
+
+  <h2 id="body-text">Body text</h2>
+  <section class="docs-example">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor .</p>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation ut aliquip ex ea commodo consequat.</p>
+    <p>Duis aute irure dolor in reprehenderit in voe cillum dolore eu fugiat nulla pariatur.</p>
+  </section>
+  <section class="highlight js-code-highlighting">
+    <pre><code>
+        <%= h "
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor .</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ut aliquip ex ea commodo consequat.</p>
+<p>Duis aute irure dolor in reprehenderit in voe cillum dolore eu fugiat nulla pariatur.</p>
+        " -%>
+  </code></pre>
+  </section>
+
+  <h2 id="inline-text">Inline text elements</h2>
+  <p>Styling for common inline HTML5 elements.</p>
+  <section class="docs-example">
+    <p><b>This is an bold text</b></p>
+    <p><u>This is an underlined text</u></p>
+  </section>
+  <section class="highlight js-code-highlighting">
+    <pre><code>
+        <%= h "
+<p><b>This is an bold text</b></p>
+<p><u>This is an underlined text</u></p>
+        " -%>
+  </code></pre>
+  </section>
+
+  <h2 id="unordered-list">Unordered list</h2>
+  <p>A list of items in which the order does not explicitly matter.</p>
+  <section class="docs-example">
+    <ul>
+      <li>Lorem ipsum dolor sit amet</li>
+      <ul>
+        <li>Phasellus iaculis neque</li>
+        <li>Purus sodales ultricies</li>
+      </ul>
+      </li>
+      <li>Faucibus porta lacus fringilla vel</li>
+      <li>Aenean sit amet erat nunc</li>
+    </ul>
+  </section>
+  <section class="highlight js-code-highlighting">
+    <pre><code>
+        <%= h "
+<ul>
+  <li>Lorem ipsum dolor sit amet</li>
+    <ul>
+      <li>Phasellus iaculis neque</li>
+      <li>Purus sodales ultricies</li>
+    </ul>
+  </li>
+  <li>Faucibus porta lacus fringilla vel</li>
+  <li>Aenean sit amet erat nunc</li>
+</ul>
+        " -%>
+  </code></pre>
+  </section>
+
+  <h2 id="ordered-list">Ordered list</h2>
+  <p>A list of items in which the order does explicitly matter.</p>
+  <section class="docs-example">
+    <ol>
+      <li>Lorem ipsum dolor sit amet</li>
+      <ol>
+        <li>Phasellus iaculis neque</li>
+        <li>Purus sodales ultricies</li>
+      </ol>
+      </li>
+      <li>Faucibus porta lacus fringilla vel</li>
+      <li>Aenean sit amet erat nunc</li>
+    </ol>
+  </section>
+  <section class="highlight js-code-highlighting">
+    <pre><code>
+        <%= h "
+<ol>
+  <li>Lorem ipsum dolor sit amet</li>
+    <ul>
+      <li>Phasellus iaculis neque</li>
+      <li>Purus sodales ultricies</li>
+    </ul>
+  </li>
+  <li>Faucibus porta lacus fringilla vel</li>
+  <li>Aenean sit amet erat nunc</li>
+</ol>
+        " -%>
+  </code></pre>
+  </section>
+</section>

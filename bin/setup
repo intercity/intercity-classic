@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+# Setup the rails app. Run this script right after you cloned it.
+
+# Make sure the config file is present
+cp -n config/intercity.example.yml config/intercity.yml
+
+# Install the ruby gems
+bundle check || bundle install
+
+# Set up configurable environment variables
+if [ ! -f .env ]; then
+  cp .sample_env .env
+fi
+
+mkdir -p keys
+mkdir -p log/servers
+
+# setup the database
+bundle exec rake db:drop
+bundle exec rake db:setup
+

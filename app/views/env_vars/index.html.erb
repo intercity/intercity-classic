@@ -1,0 +1,54 @@
+<% title("Application: #{current_app.name}: Edit environment variables") %>
+
+<%= render "applications/app_navigation" %>
+
+<section class="env_vars">
+  <%= form_for @env_var, url: env_vars_path(current_app.server, current_app), method: :post do |f| %>
+    <% if flash[:error].present? %>
+      <div class="flashes error">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    <% if @env_var.errors.any? %>
+      <section class="form_errors">
+        <ul>
+          <% @env_var.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
+    <table>
+      <thead>
+        <tr>
+          <th class="key_column">Key</th>
+          <th>Value <span class="explanation">(Click to reveal)</span></th>
+          <th class="icon_column"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @env_vars %>
+        <tr>
+          <td class="input-group">
+            <%= f.text_field :key, placeholder: "ENV_KEY" %>
+          </td>
+          <td class="input-group">
+            <%= f.text_field :value, placeholder: "your_value" %>
+          </td>
+          <td>
+            <%= button_tag "Add" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="submit <%= "hidden" unless current_app.server.working? %>" data-server-state="working">
+      <i class="fa fa-spin fa-repeat fa-fw"></i> Applying changes...
+    </div>
+    <div class="submit <%= "hidden" if current_app.server.working? %>" data-server-state="idle">
+      <%= link_to "Apply changes", apply_env_vars_path(current_app.server, current_app),
+        method: :post, class: 'button' %>
+      or
+      <%= link_to "Go back", applications_path(current_app.server) %>
+    </div>
+  <% end %>
+</section>

@@ -1,0 +1,30 @@
+<% if current_server.working? %>
+  $('[data-server-state~=working]').removeClass('hidden');
+  new ServerPoller().poll();
+<% else %>
+  <% if current_app %>
+    if($('div#applying').length) {
+      <% if current_server.last_error.blank? %>
+        $('div#applying').replaceWith('<%= j render "applications/application_done" %>')
+      <% else %>
+        $('div#applying').replaceWith('<%= j render "applications/application_error" %>')
+      <% end %>
+    }
+  <% end %>
+  <% if @deleted_apps.present? %>
+    if($('tr.marked_deleted').length) {
+      <% @deleted_apps.each do |app| %>
+        $('tr#app_<%= app.id %>').remove();
+      <% end %>
+    }
+  <% end %>
+
+  <% if current_server.applications.blank? %>
+      $('tr.blank_slate').removeClass('hidden');
+  <% end %>
+
+  $('[data-server-state~=working]').addClass('hidden');
+  $('[data-server-state~=idle]').removeClass('hidden');
+
+  $('form.edit_server button:disabled').attr('disabled', false)
+<% end %>

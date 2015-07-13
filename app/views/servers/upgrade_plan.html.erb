@@ -1,0 +1,43 @@
+<% title "You've hit your server limit!" %>
+
+<div class="body">
+
+  <div class="container">
+
+    <section class="center_window">
+
+      <% if @next_plan.present? %>
+
+        <header>
+          <h1>You've reached the server limit!</h1>
+        </header>
+
+        <p>Your account has a maximum of <%= t('.max_servers_usage_html', count: @plan.max_servers) %>. Upgrade your account to install more servers &mdash; it's just a few clicks.</p>
+
+        <h2>Upgrade to the next plan:</h2>
+        <ul>
+          <li>Manage <b><%= @next_plan.max_servers %> servers</b>.</li>
+          <li>For $<%= @next_plan.stripe_amount / 100 %>/month.</li>
+        </ul>
+
+        <p><%= link_to "Upgrade now", subscription_path, class: "button" %> or <%= link_to "go back", servers_path %></p>
+
+      <% else %>
+
+        <header>
+          <h1>You've reached the server limit!</h1>
+        </header>
+
+        <p>Your account has a maximum of <%= t('.max_servers_usage_html', count: @plan.max_servers) %>. Currently we do not offer regular plans over <%= t('.servers', count: @plan.max_servers) %>. But we can create a custom plan for your needs.</p>
+
+        <h2>Upgrade to a custom plan:</h2>
+
+        <p><%= link_to "Contact us", '#', id: 'IntercomContactUs', class: 'button' %></p>
+
+      <% end %>
+
+    </section>
+
+  </div>
+
+</div>

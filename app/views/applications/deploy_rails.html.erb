@@ -1,0 +1,126 @@
+<% title("Deploying #{current_app.name}") %>
+
+<%= render "app_navigation" %>
+
+<section class="guide wide_window">
+  <header>
+    <h1>Deploying <strong><%= current_app.name %></strong></h1>
+  </header>
+
+  <section class="introduction">
+    <p>Deploying your application is easy. This page shows you 4 steps to set up your app for deployment. It will only take a few minutes. Let's get started.</p>
+
+    <p>In this guide, you are going to do four things:</p>
+
+    <ul>
+      <li>Set up the intercity gem for deployment</li>
+      <li>Set up the deployment configuration files for Capistrano</li>
+      <li>Verify access to your server</li>
+      <li>Deploy your application</li>
+    </ul>
+  </section>
+
+  <section class="step">
+    <h1>1. Set up the intercity gem for deployment</h1>
+
+    <p>First, add our gem to the <code>Gemfile</code> of your application.</p>
+
+    <pre class="snippet"><code>gem 'intercity'</code></pre>
+
+    <p>Install it by running bundler:</p>
+
+    <pre class="snippet"><code>$ bundle install</code></pre>
+
+    <p>Then generate a binstub for `unicorn` with the following command:</p>
+
+    <p><code><pre>$ bundle binstub unicorn</pre></code></p>
+
+    <p>And commit and push the changes to your repository.</p>
+
+    <p><code><pre class="snippet">
+$ git add bin/unicorn
+$ git commit -am "Added binstub for Unicorn"
+$ git push </pre></code></p>
+
+    <p>Continue to step 2.</p>
+  </section>
+
+  <section class="step">
+
+    <h1>2. Set up the deployment configuration files for Capistrano</h1>
+
+    <p>Now run the following command to generate two template configuration files:</p>
+
+    <p><code><pre class="snippet">$ bundle exec capify .</pre></code></p>
+
+    <p>This will generate two files in your app:</p>
+
+    <ul>
+      <li>Capfile</li>
+      <li>config/deploy.rb</li>
+    </ul>
+
+    <p>Replace the contents of <code>Capfile</code> with the following:</p>
+
+    <pre class="snippet"><code>load 'deploy'
+load 'deploy/assets'
+load 'config/deploy'</code></pre>
+
+    <p>Then, edit `config/deploy.rb` and replace it with the next sample. We've already pre filled this sample with your application and server data:</p>
+
+<pre class="snippet"><code>require 'intercity/capistrano'
+require 'bundler/capistrano'
+
+set :application, "<%= current_app.name %>"
+set :repository, ">> CHANGE THIS TO YOUR GIT SSH REPOSITORY URL <<"
+
+server "<%= @server.address %>", :web, :app, :db, :primary => true
+
+after "deploy:restart", "deploy:cleanup"</code></pre>
+
+    <p>Set the <code>:repository</code> variable to the Git+SSH repository URL for your application.</p>
+
+    <p>Commit these files and push them to your repository:</p>
+
+    <p><code><pre class="snippet">
+$ git commit -am "Added Capistrano configuration files"
+$ git push </pre></code></p>
+
+    <p>Continue to step 3.</p>
+
+  </section>
+
+  <section class="step">
+    <h1>3. Verify access to your server</h1>
+
+    <p>Let's verify if your server and the deployment configuration files are set up correctly. You can verify this by running the following command:</p>
+
+    <pre><code class="snippet">$ bundle exec cap deploy:check</code></pre>
+
+    <p>If you see the following output, everything is set up correctly and you can continue to step 4.</p>
+
+    <p><code><pre class="snippet">You appear to have all necessary dependencies installed</pre></code></p>
+
+    <p>If the command asks you for your password, you need to add your SSH key to the server. You can do this <%= link_to "on the edit page for this server", edit_server_path(@server) %>. Once you've added your SSH key to your server, you can run the <code>bundle exec cap deploy:check</code> command again.</p>
+
+  </section>
+
+  <section class="step">
+    <h1>4. Deploy your application</h1>
+
+    <p>Congratulations! Everything is set up to deploy your app. Run this command to deploy your application and run your initial database migrations:</p>
+
+    <p><code><pre class="snippet">$ bundle exec cap deploy:migrations</pre></code></p>
+
+    <p>And run the next command to start the application process. You only have to do this once:</p>
+
+    <p><code><pre class="snippet">$ bundle exec cap deploy:start</pre></code></p>
+
+    <p>Finished!</p>
+
+    <% if current_app.domain_names.present? %>
+      <p>Browse to <%= link_to current_app.domain_names.split(' ').first, "http://#{current_app.domain_names.split(' ').first}" %> to see your application in action.</p>
+    <% end %>
+  </section>
+
+</section>

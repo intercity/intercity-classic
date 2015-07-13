@@ -1,0 +1,13 @@
+<% if application.deleting? %>
+  <tr id="app_<%= application.id %>" class="marked_deleted">
+    <td><%= application.name %>
+      <small>on <span class="domain_names"><%= truncate(application.domain_names, length: 30) %></span></small>
+    </td>
+    <td colspan="3" class="deleting">Deleting <i class="fa fa-refresh fa-spin"></i></td>
+  </tr>
+<% else %>
+  <tr>
+    <td class="name"><%= fa_icon "cube fw" %> <%= link_to application.name, edit_application_path(current_server, application) %></td>
+    </td>
+  </tr>
+<% end %>

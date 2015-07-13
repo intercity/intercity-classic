@@ -1,0 +1,17 @@
+<%= render "applications/app_navigation" %>
+<section class="ssl-certificates">
+  <div class="its-enabled">
+    <i class="fa fa-check-circle-o"></i> You have SSL enabled for this app.
+  </div>
+  <div class="actions">
+    <div class="submit <%= "hidden" unless current_server.working? %>" data-server-state="working">
+      <i class="fa fa-spin fa-repeat fa-fw"></i> Applying changes...
+    </div>
+      <div class="submit <%= "hidden" if current_server.working? %>" data-server-state="idle">
+        <p><%= link_to "Disable SSL & remove certificates",
+          ssl_certificates_path(current_app.server, current_app),
+          method: :delete, class: "button remove",
+          data: { confirm: "Are you sure you want to disable SSL and remove the certificates from your server?" } %></p>
+    </div>
+  </div>
+</section>

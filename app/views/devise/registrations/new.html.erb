@@ -1,0 +1,25 @@
+<% title("Sign up for Intercity") %>
+
+<section class="login">
+  <h1>Sign up for Intercity</h1>
+  <p>Already have an account? <%= link_to "Sign in here", new_user_session_path %></p>
+
+  <%= render partial: 'application/flash_messages' %>
+
+  <% if resource.errors.any? %>
+    <section class="form_errors">
+      <% resource.errors.full_messages.each do |message| %>
+        <%= message %><br/>
+      <% end %>
+    </section>
+  <% end %>
+
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <p><%= f.text_field :full_name, :autofocus => true, placeholder: 'Fullname' %></p>
+    <p><%= f.email_field :email, :autofocus => true, placeholder: 'Email' %></p>
+    <p><%= f.password_field :password, placeholder: "Password" %></p>
+    <p class="submit"><%= button_tag "Create account" %></p>
+    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <% end %>
+
+</section>

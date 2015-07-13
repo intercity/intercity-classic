@@ -1,0 +1,29 @@
+<% title("Installing server...") %>
+<section class="servers">
+  <div class="body">
+    <div class="container" id="applying">
+      <section class="center_window">
+        <header>
+          <h1><i class="fa fa-refresh fa-spin fa-fw" /></i> Installing server <strong><%= @server.name %></strong>...</h1>
+        </header>
+      </section>
+      <section class="body">
+        <p>Please wait while the server installation is completed. This is what's happening on the server:</p>
+
+        <ul>
+          <li>Authenticating your dashboard with the server</li>
+          <li>Installing Chef</li>
+          <li>Installing <%= t(@server.db_type, scope: 'server.db_type_options') %></li>
+          <li>Installing <%= t(@server.stack, scope: 'server.stack_options') %></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+  function updateBootstrapStatus() {
+    $.get('<%= check_bootstrap_status_server_path(@server, format: :js) %>')
+  }
+
+  window.bootstrappingCheckIntervalId = setInterval(updateBootstrapStatus, 1000);
+</script>

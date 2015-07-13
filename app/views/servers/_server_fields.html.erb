@@ -1,0 +1,26 @@
+<p>
+  <%= f.label :name %>
+  <%= f.text_field :name, placeholder: 'Give this server a name' %>
+</p>
+
+<p class="server_address">
+  <%= f.label :address, "IP address or hostname" %>
+  <%= f.text_field :address %>
+</p>
+
+<p class="server_ssh_port">
+  <%= f.label :ssh_port %>
+  <%= f.text_field :ssh_port %>
+</p>
+
+<p class="server_ssh_port">
+  <%= f.label :unattended_upgrades do %>
+    <%= f.check_box :unattended_upgrades %>
+    Enable automatic updates
+  <% end %>
+  <span class='hint'>
+    When you enable this option, critical security patches and updates will be installed on
+    your server automatically each night. We advice you to enable this option to keep your
+    server as secure as possible.
+  </span>
+</p>

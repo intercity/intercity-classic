@@ -1,0 +1,12 @@
+<% if @server %>
+  <section class="server-apply-error hidden">
+    <header>
+      <h1><i class="fa fa-warning fa-fw"></i> Could not apply changes on <strong><%= @server.name %></strong></h1>
+    </header>
+    <p><%= @server.last_error %></p>
+    <p><%= link_to "View log", log_server_path(@server), target: '_blank', class: 'button problem' %>
+       <%= link_to "Report this...", '#', id: 'IntercomReportProblem',
+                    class: 'problem button' %>
+  </p>
+  </section>
+<% end %>

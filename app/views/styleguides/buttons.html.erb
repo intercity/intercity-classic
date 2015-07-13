@@ -1,0 +1,52 @@
+<section class="section buttons">
+  <h1 id="buttons">Buttons</h1>
+  <p>Buttons are used for <b>actions</b>, like in forms, while textual hyperlinks
+  are used for <b>destinations</b>, or moving from one page to another.</p>
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#default-buttons">Default buttons</a></li>
+    <li><a href="#disabled">Disabled</a></li>
+    <li><a href="#danger">Danger</a></li>
+  </ul>
+
+  <h2 id="default-buttons">Default buttons</h2>
+  <section class="docs-example">
+    <button class="btn">Default button</button>
+    <a href="#" class="btn">Default button link</a>
+  </section>
+  <section class="highlight js-code-highlighting">
+    <pre><code>
+        <%= h '
+<button class="btn">Default button</button>
+<a href="#" class="btn">Default button link</a>
+        ' -%>
+  </code></pre>
+  </section>
+
+  <h2 id="disabled">Disabled</h2>
+  <section class="docs-example">
+    <button class="btn" disabled="true">Disabled button</button>
+    <p><i>Note:</i> We currently don't have a disabled version of an hyperlink</p>
+  </section>
+  <section class="highlight js-code-highlighting">
+    <pre><code>
+        <%= h '
+<button class="btn" disabled="true">Disabled button</button>
+        ' -%>
+  </code></pre>
+  </section>
+
+  <h2 id="danger">Danger</h2>
+  <section class="docs-example">
+    <button class="btn btn-danger">Danger button</button>
+    <a href="#" class="btn btn-danger">Danger button link</a>
+  </section>
+  <section class="highlight js-code-highlighting">
+    <pre><code>
+        <%= h '
+<button class="btn btn-danger">Danger button</button>
+<a href="#" class="btn btn-danger">Danger button link</a>
+        ' -%>
+  </code></pre>
+  </section>
+</section>

@@ -1,0 +1,59 @@
+section#flash_messages {
+  .alert {
+    @extend %flash-alert;
+  }
+
+  .error {
+    @extend %flash-error;
+  }
+
+  .notice {
+    @extend %flash-notice;
+  }
+
+  .success {
+    @extend %flash-success;
+  }
+}
+
+.modal-dialog {
+  background: #ffffff;
+  margin: 20px auto;
+  max-width: 500px;
+  position: relative;
+  width: auto;
+}
+
+
+.notification {
+  border-radius: $base-border-radius;
+  display: inline-block;
+  margin: 20px 6px;
+  overflow: hidden;
+
+  .notification-icon {
+    border-bottom-left-radius: $base-border-radius;
+    border-top-left-radius: $base-border-radius;
+    color: #ffffff;
+    display: inline-block;
+    float: left;
+    padding: 14px;
+  }
+
+  .notification-message {
+    border: 1px solid #eee;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+    border-radius: 3px;
+    border-top-left-radius: 0;
+    display: inline-block;
+    margin: 0;
+    padding: 13px;
+  }
+
+  &.notification-success {
+    .notification-icon {
+      background: #019875;
+    }
+  }
+}
