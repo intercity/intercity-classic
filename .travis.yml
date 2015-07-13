@@ -1,0 +1,16 @@
+language: ruby
+sudo: required
+rvm:
+  - 2.2
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y libpolarssl-dev
+
+before_script:
+  - cp config/intercity.example.yml config/intercity.yml
+branches:
+  only:
+    - 'master'
+matrix:
+  fast_finish: true
