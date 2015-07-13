@@ -1,6 +1,6 @@
 # Intercity
 
-![Codeship](https://codeship.com/projects/4dd09480-9d78-0132-6acc-4ef4301ddd41/status?branch=master)
+[ ![Codeship Status for intercity/intercity](https://codeship.com/projects/7ebf47a0-0b97-0133-917c-66578df262d2/status?branch=master)](https://codeship.com/projects/90859)
 
 ## Contributing
 
