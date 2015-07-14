@@ -26,6 +26,14 @@ If you want to encrypt your disclosure email please email us to ask for our PGP 
 
 ## Configure Intercity on your local development environment
 
+### Requirements
+* Ruby 2.2.2
+* Postgresql
+* Redis
+* PolarSSL
+    * **osx:** `$ brew install polarssl`
+    * **linux:** `$ sudo apt-get install libpolarssl-dev`
+
 ### Setup
 
 1. After cloning, run the setup script
