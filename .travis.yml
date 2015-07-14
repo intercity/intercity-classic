@@ -1,5 +1,7 @@
 language: ruby
 sudo: required
+services:
+  - redis-server
 install:
   - cp config/intercity.example.yml config/intercity.yml
   - wget https://tls.mbed.org/download/polarssl-1.3.9-gpl.tgz --no-check-certificate
