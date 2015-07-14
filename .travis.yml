@@ -1,5 +1,6 @@
 language: ruby
 sudo: required
+bundler_args: --retry 3
 rvm:
   - 2.2
 install:
