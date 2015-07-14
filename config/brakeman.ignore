@@ -1,0 +1,25 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "a8d1d949f2e5c4203027251c7571865d24652bcfc52c8e7bb0b757cd3966b240",
+      "message": "Possible command injection",
+      "file": "app/models/server_log.rb",
+      "line": 27,
+      "link": "http://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "IO.popen([\"tail\", \"-#{n}\", \"#{file}\"])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ServerLog",
+        "method": "latest"
+      },
+      "user_input": "file",
+      "confidence": "Medium",
+      "note": "We can ignore this warning since there is 100% no user input"
+    }
+  ],
+  "updated": "2015-07-14 12:49:10 +0200",
+  "brakeman_version": "3.0.5"
+}

@@ -24,7 +24,7 @@ class TrialController < ApplicationController
       email: user.email,
       errors: user.errors
     }
-    render text: "#{params[:callback]}(#{json_response.to_json})", content_type: "text/javascript"
+    render json: json_response.to_json, callback: params[:callback]
   end
 
   private
