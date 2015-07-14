@@ -1,11 +1,13 @@
 language: ruby
 sudo: required
 install:
-  - "cp config/intercity.example.yml config/intercity.yml"
+  - cp config/intercity.example.yml config/intercity.yml
   - wget https://tls.mbed.org/download/polarssl-1.3.9-gpl.tgz --no-check-certificate
   - tar -xzvf polarssl-1.3.9-gpl.tgz
   - cd polarssl-1.3.9 && cmake -D USE_SHARED_POLARSSL_LIBRARY:BOOL=ON . && make && sudo make install
   - bundle install --jobs=3 --retry=3 --without development
+before_script:
+  - bundle exec rake db:setup
 branches:
   only:
     - 'master'
