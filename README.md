@@ -1,6 +1,6 @@
 # Intercity
 
-[ ![Codeship Status for intercity/intercity](https://codeship.com/projects/7ebf47a0-0b97-0133-917c-66578df262d2/status?branch=master)](https://codeship.com/projects/90859)
+[![Build Status](https://semaphoreci.com/api/v1/projects/bb80760f-43e8-43ba-9bff-0c6b125b40e1/482459/shields_badge.svg)](https://semaphoreci.com/jvanbaarsen/intercity)
 
 ## Contributing
 
