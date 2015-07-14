@@ -14,10 +14,10 @@ Need help? Don't hestitate to open an issue!
 
 ## Continuous Integration
 
-CI is hosted with [Codeship][3]. The build is run automatically whenever any
-branch is updated on GitHub
+CI is hosted with [Semaphoreapp][3]. The build is run automatically whenever any
+branch is updated on GitHub.
 
 [1]: CONTRIBUTING.md
 [2]: doc/installation.md
-[3]: https://codeship.com
+[3]: https://semaphoreapp.com
 [4]: CODE_OF_CONDUCT.md
