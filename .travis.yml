@@ -1,15 +1,11 @@
 language: ruby
 sudo: required
-bundler_args: --retry 3
-rvm:
-  - 2.2
 install:
   - "cp config/intercity.example.yml config/intercity.yml"
   - wget https://tls.mbed.org/download/polarssl-1.3.9-gpl.tgz --no-check-certificate
   - tar -xzvf polarssl-1.3.9-gpl.tgz
   - cd polarssl-1.3.9 && cmake -D USE_SHARED_POLARSSL_LIBRARY:BOOL=ON . && make && sudo make install
-before_script:
-  - bundle install
+  - bundle install --jobs=3 --retry=3 --without development
 branches:
   only:
     - 'master'
