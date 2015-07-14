@@ -34,3 +34,5 @@ config/initializers/encrypted_value.rb
 .env
 
 config/intercity.yml
+.secret
+output.html

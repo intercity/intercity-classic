@@ -7,8 +7,9 @@ class Backup < ActiveRecord::Base
   belongs_to :application
 
   validates :s3_access_key, :s3_secret_access_key, presence: true, if: -> { s3_enabled? }
-  validates :s3_access_key, format: { with: /\d*\D+\d*/ }, if: -> { s3_access_key.present? && s3_enabled? }
-  validates :s3_secret_access_key, format: { with: /\d*\D+\d*/ },
+  validates :s3_access_key, format: { with: /\A\d*\D+\d*\z/ },
+                            if: -> { s3_access_key.present? && s3_enabled? }
+  validates :s3_secret_access_key, format: { with: /\A\d*\D+\d*\z/ },
                                    if: -> { s3_secret_access_key.present? && s3_enabled? }
 
   private
