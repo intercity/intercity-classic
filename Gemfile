@@ -37,7 +37,7 @@ gem 'passenger'
 gem "rails_admin"
 gem "appsignal"
 gem 'paranoia', '~> 2.1.0'
-gem "polarssl", "~> 1.0.1"
+gem "polarssl", "~> 1.0.2"
 gem "magnific-popup-rails"
 gem "slack-notifier", "~>1.2.0"
 gem "settingslogic"

@@ -369,7 +369,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.18.2)
-    polarssl (1.0.1)
+    polarssl (1.0.2)
     poltergeist (1.6.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -590,7 +590,7 @@ DEPENDENCIES
   paranoia (~> 2.1.0)
   passenger
   pg (~> 0.18.2)
-  polarssl (~> 1.0.1)
+  polarssl (~> 1.0.2)
   poltergeist
   quiet_assets
   rack_session_access
@@ -619,4 +619,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
