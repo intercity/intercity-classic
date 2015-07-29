@@ -36,3 +36,5 @@ config/initializers/encrypted_value.rb
 config/intercity.yml
 .secret
 output.html
+
+passenger.*
