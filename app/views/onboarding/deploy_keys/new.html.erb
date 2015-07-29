@@ -7,7 +7,7 @@
       <div class="onboarding-page-content">
         <p>You're almost ready to deploy your app. One thing you need to do is
         add the SSH key from your workstation to the server.
-        This gives you access to deploy <b>appname</b>.</p>
+        This gives you access to deploy <b><%= current_app.name %></b>.</p>
         <div class="form-group <%= "field_with_errors" if validation_errors?(@ssh_key, :key) %>">
           <%= f.label :key, "Paste your SSH key here" %>
           <%= f.text_area :key %>
