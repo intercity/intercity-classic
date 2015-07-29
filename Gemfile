@@ -33,7 +33,6 @@ gem "intercom-rails", "~> 0.2.24"
 gem "whenever", require: false
 gem "droplet_kit", github: "jvanbaarsen/droplet_kit", branch: "bumped-as"
 gem 'nprogress-rails', '~> 0.1.6.3'
-gem 'passenger'
 gem "rails_admin"
 gem "appsignal"
 gem 'paranoia', '~> 2.1.0'
@@ -41,6 +40,8 @@ gem "polarssl", "~> 1.0.2"
 gem "magnific-popup-rails"
 gem "slack-notifier", "~>1.2.0"
 gem "settingslogic"
+
+gem "passenger", group: :passenger
 
 group :development, :test do
   gem 'byebug'
