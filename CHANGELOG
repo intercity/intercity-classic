@@ -2,21 +2,25 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## V1.0 - 2015-08-19
+This is the initial release. This is also the reason that this Changelog is
+empty. For future releases we will stick to the following template:
+
 ### Added
-- Support for ruby 2.2.3
+- We will add new features here.
 
 ### Changed
-- Nothing
+- You can find behaviour changes here
 
 ### Deprecated
-- Nothing
+- Before we remove features, we will deprecate them. When something is
+deprecated, you can see it here.
 
 ### Removed
-- Nothing
+- Did we remove anything? You can read it here
 
 ### Fixed
-- Updated the PolarSSL Gem so it supports Polarssl (Embed TLS) 1.3.10
+- All bugs that have been fixed
 
 ### Security
-- Nothing
+- If we find a security issue, we will solve it, and make a report about it here
