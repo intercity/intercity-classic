@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428103406) do
+ActiveRecord::Schema.define(version: 20150819065939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20150428103406) do
 
   create_table "onboardings", force: :cascade do |t|
     t.string   "name",                 limit: 255
-    t.string   "ruby_version",         limit: 255, default: "2.2.1", null: false
+    t.string   "ruby_version",         limit: 255, default: "2.2.3", null: false
     t.integer  "db_type",                          default: 0,       null: false
     t.integer  "provider",                         default: 0,       null: false
     t.integer  "digitalocean_region",              default: 0,       null: false

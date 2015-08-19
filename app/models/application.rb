@@ -35,7 +35,7 @@ class Application < ActiveRecord::Base
 
   scope :active_server, -> { joins(:server).includes(:server).where(servers: { archived: false }) }
 
-  RUBY_VERSIONS = ["2.2.2", "2.2.1", "2.1.5", "2.1.3", "2.1.2", "2.0.0-p481", "1.9.3-p547"]
+  RUBY_VERSIONS = ["2.2.3", "2.2.2", "2.2.1", "2.1.5", "2.1.3", "2.1.2", "2.0.0-p481", "1.9.3-p547"]
 
   def formatted_env_vars
     Hash[env_vars.map { |var| [var.key, var.value] }]

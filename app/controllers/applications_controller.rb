@@ -3,7 +3,7 @@ class ApplicationsController < ApplicationController
   layout "servers"
 
   def new
-    @app = Application.new(ruby_version: "2.2.2")
+    @app = Application.new(ruby_version: "2.2.3")
   end
 
   def index
