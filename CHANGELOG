@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 ### Added
-- Nothing
+- Support for ruby 2.2.3
 
 ### Changed
 - Nothing
