@@ -134,7 +134,7 @@ cd /home/intercity
 ### Clone the source
 
 ```shell
-  sudo -u intercity -H git clone https://github.com/intercity/intercity.git -b path-to-opensource intercity
+  sudo -u intercity -H git clone https://github.com/intercity/intercity.git -b 1-0-stable intercity
 ```
 **note** you can checkout master if you want the bleeding edge version, but
 never install master on production servers!
