@@ -17,6 +17,7 @@
 /tmp
 
 *_key
+!bin/generate_encryption_key
 vagrant/.vagrant
 vagrant/package.box
 .vagrant

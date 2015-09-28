@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "securerandom"
+
+puts "Your secure encryption token is:\n"
+puts SecureRandom.hex(16)
