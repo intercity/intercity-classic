@@ -205,4 +205,10 @@ irb(main)> exit
 bin/setup_passenger
 ```
 
+## 8. Install Init Script
+
+```shell
+sudo cp lib/support/init.d/intercity /etc/init.d/intercity
+```
+
 ## Done!

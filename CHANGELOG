@@ -2,25 +2,24 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## V1.0 - 2015-08-19
-This is the initial release. This is also the reason that this Changelog is
-empty. For future releases we will stick to the following template:
+For changelog of past releases, please check the release branch.
+
+## V1.1 - Unreleased
 
 ### Added
-- We will add new features here.
+- Nothing Yet
 
 ### Changed
-- You can find behaviour changes here
+- Nothing Yet
 
 ### Deprecated
-- Before we remove features, we will deprecate them. When something is
-deprecated, you can see it here.
+- Nothing Yet
 
 ### Removed
-- Did we remove anything? You can read it here
+- Nothing Yet
 
 ### Fixed
-- All bugs that have been fixed
+- Added an init.d script for starting required services for Intercity
 
 ### Security
-- If we find a security issue, we will solve it, and make a report about it here
+- Nothing Yet
