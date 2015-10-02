@@ -7,7 +7,7 @@ For changelog of past releases, please check the release branch.
 ## V1.1 - Unreleased
 
 ### Added
-- Nothing Yet
+- Ability to set Appsignal as your Error catcher
 
 ### Changed
 - Nothing Yet

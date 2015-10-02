@@ -1,7 +1,6 @@
 default: &defaults
   # Your push api key, it is possible to set this dynamically using ERB:
-  # push_api_key: "<%= ENV['APPSIGNAL_PUSH_API_KEY'] %>"
-  push_api_key: "1e11ef3a-a9bb-4193-a55e-0d5dc539034c"
+  push_api_key: "<%= Settings.intercity.try(:appsignal_push_key) %>"
 
   # Your app's name
   name: "Intercity"
