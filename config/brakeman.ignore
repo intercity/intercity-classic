@@ -18,8 +18,46 @@
       "user_input": "file",
       "confidence": "Medium",
       "note": "We can ignore this warning since there is 100% no user input"
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "1e9e85b1ecf5c5e401230865fa75d6cc9ba6c77268b9bcc5521402bf660923ce",
+      "message": "Possible command injection",
+      "file": "lib/system_backup/manager.rb",
+      "line": 60,
+      "link": "http://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "Kernel.system(*[\"rm\", \"#{timestamp}_settings_backup.tar\"])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "SystemBackup::Manager",
+        "method": "remove_old"
+      },
+      "user_input": "timestamp",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "bac7880fa468679414a952c13acc60037d9e00ba3381e7564362d25695ebbeac",
+      "message": "Possible command injection",
+      "file": "lib/system_backup/manager.rb",
+      "line": 99,
+      "link": "http://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "Kernel.system(*[\"tar\", \"-xf\", \"#{(File.join(\"#{Dir.glob(\"*_intercity_backup.tar\").each.map do\n f.split(/_/).first.to_i\n end.first}_intercity_backup.tar\") or File.join((ENV[\"BACKUP\"] + \"_intercity_backup.tar\")))}\"])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "SystemBackup::Manager",
+        "method": "unpack"
+      },
+      "user_input": "Dir.glob(\"*_intercity_backup.tar\").each.map do\n f.split(/_/).first.to_i\n end.first",
+      "confidence": "Medium",
+      "note": ""
     }
   ],
-  "updated": "2015-07-14 12:49:10 +0200",
+  "updated": "2015-10-03 20:25:59 +0200",
   "brakeman_version": "3.0.5"
 }
