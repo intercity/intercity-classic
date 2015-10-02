@@ -10,6 +10,9 @@ production: &base
     ## Allow users to create an account
     signup_enabled: true
     signup_url: "/users/sign_up"
+
+    # If you want to use AppSignal for loging, add your key here:
+    # appsignal_push_key: ""
   chef_repo:
     path: "/path/to/chef_repo"
 development:
