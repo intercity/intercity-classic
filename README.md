@@ -34,7 +34,15 @@ project running locally. Please make sure you've read the [CODE_OF_CONDUCT][4].
 CI is hosted with [Semaphoreapp][3]. The build is run automatically whenever any
 branch is updated on GitHub.
 
+## Getting help
+
+* [#intercity IRC channel][5]: a Freenode channel to get in touch with other Intercity users and get help.
+* Open an issue
+* [Email us][6]
+
 [1]: CONTRIBUTING.md
 [2]: doc/installation.md
 [3]: https://semaphoreapp.com
 [4]: CODE_OF_CONDUCT.md
+[5]: https://webchat.freenode.net/?channels=intercity
+[6]: mailto:hello@intercityup.com
