@@ -107,6 +107,13 @@ make install
 ./utils/install_server.sh
 ```
 
+We need to make sure that Redis is only listening for localhost connections. Run
+the following command
+
+```shell
+sed 's/^# bind 127/bind 127/' /etc/redis/6379.conf | sudo tee /etc/redis/6379.conf
+```
+
 ## 7. Chef-repo
 
 Intercity makes use of the chef-repo for installing your servers. We need to
