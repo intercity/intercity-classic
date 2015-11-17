@@ -39,6 +39,8 @@ gem 'paranoia', '~> 2.1.0'
 gem "polarssl", "~> 1.0.2"
 gem "magnific-popup-rails"
 gem "settingslogic"
+gem "colored", '~> 1.2'
+gem "colorize", '~> 0.5.8'
 
 gem "passenger", group: :passenger
 

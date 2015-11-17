@@ -8,6 +8,7 @@ For changelog of past releases, please check the release branch.
 
 ### Added
 - Ability to set Appsignal as your Error catcher
+- Rake task to create and restore backups of your Intercity System
 
 ### Changed
 - Nothing Yet

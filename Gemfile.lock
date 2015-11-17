@@ -144,6 +144,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    colored (1.2)
+    colorize (0.5.8)
     columnize (0.8.9)
     connection_pool (2.1.0)
     daemon_controller (1.2.0)
@@ -556,6 +558,8 @@ DEPENDENCIES
   brakeman
   byebug
   coffee-rails (~> 4.0.0)
+  colored (~> 1.2)
+  colorize (~> 0.5.8)
   daemon_controller
   database_cleaner
   devise (~> 3.4.1)
